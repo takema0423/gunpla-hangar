@@ -1,130 +1,192 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0a1120" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><title>GUNPLA HANGAR v1.2</title><style>@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;500;600;700&display=swap');
-:root{color-scheme:dark;--bg:#09111f;--card:#121e31;--line:#28364c;--text:#ebf3ff;--muted:#91a3bc;--blue:#5d9bff;--gold:#f2c46e;--green:#68dab7}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -15%,#203959,transparent 55%),var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}header{padding:calc(20px + env(safe-area-inset-top)) 20px 16px;max-width:850px;margin:auto}h1{font-size:25px;letter-spacing:.12em;margin:0}h2{font-size:18px;margin:0 0 14px}p{margin:6px 0}.sub,.small{color:var(--muted);font-size:12px}.header-row{display:flex;align-items:center;justify-content:space-between}.brand{color:var(--blue);letter-spacing:.2em;font-size:11px;font-weight:700}.shell{max-width:850px;margin:auto;padding:0 16px calc(95px + env(safe-area-inset-bottom))}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0 20px}.stat{background:linear-gradient(145deg,#1b2b44,var(--card));border:1px solid var(--line);border-radius:14px;padding:12px}.stat strong{display:block;font-size:27px;line-height:1.4}.stat span{font-size:11px;color:var(--muted)}.section{margin-top:22px}.panel{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:16px;margin:10px 0}.tabs{position:fixed;bottom:0;left:0;right:0;background:#0c1728f5;border-top:1px solid var(--line);display:flex;justify-content:center;padding:9px 8px calc(9px + env(safe-area-inset-bottom));z-index:5}.tabs>button{background:none;border:0;color:var(--muted);width:min(25%,170px);font-size:11px;padding:5px 1px}.tabs button.active{color:var(--blue);font-weight:700}.tabs b{display:block;font-size:22px}.actions{display:flex;gap:9px;flex-wrap:wrap}.primary,.secondary,.danger{padding:11px 15px;border-radius:12px;font-weight:700}.primary{background:var(--blue);border:1px solid var(--blue);color:#071326}.secondary{background:#1a2a40;border:1px solid #3b5374;color:var(--text)}.danger{background:#42232b;border:1px solid #85505d;color:#ffced6}.full{width:100%}.item{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.item-name{font-size:16px;font-weight:750;word-break:break-word}.chip{display:inline-block;background:#243752;color:#bcd8ff;border:1px solid #385278;font-size:11px;padding:3px 8px;border-radius:30px;margin:5px 5px 0 0}.pill{color:var(--gold)}.muted{color:var(--muted)}.right{text-align:right}.money{font-variant-numeric:tabular-nums}.progress{height:7px;background:#28384f;border-radius:30px;overflow:hidden;margin-top:12px}.progress>div{height:100%;background:linear-gradient(90deg,var(--blue),var(--green))}form{display:grid;gap:12px}label{display:grid;gap:5px;font-size:13px;color:#c7d7eb}input,select,textarea{min-width:0;width:100%;padding:11px 12px;border:1px solid #455674;border-radius:11px;color:var(--text);background:#0a1425}textarea{min-height:72px;resize:vertical}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hide{display:none!important}dialog{border:1px solid #3b4f6d;border-radius:17px;background:#122139;color:var(--text);padding:18px;width:calc(100% - 30px);max-width:490px;max-height:85vh;overflow:auto}dialog::backdrop{background:#000b}dialog h2{margin-bottom:12px}.dialoghead{display:flex;justify-content:space-between;align-items:center}.x{border:0;background:none;color:white;font-size:25px}.empty{text-align:center;padding:24px;color:var(--muted)}.searchrow{display:flex;gap:8px;align-items:center}.searchrow input{flex:1}.tiny{padding:7px 9px;font-size:12px}.footer-note{font-size:12px;color:var(--muted);margin-top:20px;line-height:1.65} .toolrow{display:flex;justify-content:space-between;gap:8px;align-items:center}.toolrow button{flex:none}.barline{display:flex;align-items:center;justify-content:space-between;gap:10px}.hero{background:linear-gradient(125deg,#243a5b,#13243d 70%);border:1px solid #365075;border-radius:18px;padding:18px}.hero strong{font-size:19px}.hiddenInput{display:none}
-
-/* v0.2 mobile UI */
-.record-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 18px}.record-tabs button{padding:10px 4px;border:1px solid var(--line);background:#1b2a42;color:var(--muted);border-radius:12px;font-size:13px}.record-tabs button.sel{background:#315993;color:#fff;border-color:#80aeff}.rec-image{width:100%;max-height:300px;object-fit:contain;background:#0b1524;border-radius:13px;margin:10px 0}.record-meta{display:flex;flex-wrap:wrap;gap:6px}.record-meta .chip{font-size:12px}.rec-actions{display:flex;justify-content:space-between;align-items:center;gap:6px}.rec-actions button{flex:none}.hint{border-left:3px solid var(--blue);padding:9px 12px;background:#172842;border-radius:8px;margin:12px 0}.field-hint{display:block;color:var(--muted);font-size:12px;margin-top:5px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.record-card{margin:12px 0}.tabs{gap:0}.tabs button{font-size:11px;min-width:0;padding-left:2px;padding-right:2px}.tabs button b{font-size:21px}#recordForm .hide-field{display:none}#previewRecordImage{width:100%;max-height:220px;object-fit:contain;border-radius:12px} .danger-text{color:#f6a0a0}
-
-/* v0.3 cinematic hangar design */
-:root{--bg:#08090d;--card:#17181bdd;--line:#78603b88;--text:#f3e9d8;--muted:#b9ad97;--blue:#82dcea;--gold:#d8b46e;--green:#81dfbd}body{background:#090b10;color:var(--text)}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(180deg,#05060b77,#080b10ce 56%,#050608f5),radial-gradient(ellipse at 50% 33%,#d4a76b26,transparent 53%),repeating-linear-gradient(90deg,transparent 0 15%,#b3a17b12 15.1% 15.3%,transparent 15.5% 25%),linear-gradient(115deg,#111d2b 0%,#161615 47%,#0c1720 100%)}body:after{content:"";position:fixed;inset:8% 6% 0;z-index:-1;pointer-events:none;opacity:.55;background:linear-gradient(90deg,#b19b6655 1px,transparent 1px) 0 0/20% 100%,linear-gradient(0deg,transparent 61%,#bba37533 61.2% 62%,transparent 62.2%),linear-gradient(110deg,transparent 21%,#7c72564d 21.5% 22%,transparent 22.5%),linear-gradient(250deg,transparent 21%,#7c72564d 21.5% 22%,transparent 22.5%),radial-gradient(ellipse at 50% 90%,#dbb5762b,transparent 47%);clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}header{border-bottom:1px solid #9a7a4933}h1{color:#f4d799;text-shadow:0 0 23px #ca9e4a44}.brand{color:#d6ba81}.panel,.stat{background:linear-gradient(137deg,#212026eb,#11141bdb);border:1px solid #b18e4b66;box-shadow:inset 0 1px #ffe0a51c,0 13px 34px #0006;backdrop-filter:blur(8px)}.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#29251ebf,#151a23b3 70%);border:1px solid #a98c54;box-shadow:0 0 30px #c59b3720}.hero:after{content:'HANGAR // 03';position:absolute;right:9px;top:7px;font:10px monospace;letter-spacing:2px;color:#d8b46e7d}.stat strong,.pill{color:#f2d397}.primary{background:linear-gradient(130deg,#eed69c,#bd914c);border-color:#f2d29b;color:#211b14}.secondary{background:#262b32df;border-color:#a38c605e;color:#eee1ca}.tabs{background:#101116f5;border-top-color:#977444aa}.tabs button.active{color:#f3cb7a}.chip{background:#373021a0;border-color:#a88c536e;color:#eed5a5}.progress>div{background:linear-gradient(90deg,#97733e,#e5c480)}dialog{background:linear-gradient(#0e2630,#0a141d);border-color:#4aabb4;box-shadow:0 0 65px #0cc6ca26}dialog:before{content:'SYSTEM / MS REGISTRATION TERMINAL';display:block;font:10px/2 monospace;letter-spacing:1.3px;color:#73d6dd;border-bottom:1px solid #28636d;margin-bottom:12px}dialog input,dialog select,dialog textarea{border-color:#437c86;background:#0c2731e8}dialog label{color:#b1e0e7}.tabs>button{width:min(16.66%,135px);font-size:10px} .tabs b{font-size:19px}.status-repair{border-color:#e58e66!important;color:#ffc0a0!important}.repair-details{margin-top:10px;border-left:2px solid #e7a874;padding:8px 11px;background:#4b291b55;color:#f9d1b8;font-size:12px}.terminal-note{font:11px monospace;color:#87dce7;letter-spacing:1px}.part-line{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}select{max-width:100%}#partKitFilter{min-width:0} .form-optional{padding:12px;background:#10303c88;border:1px dashed #4f8c93;border-radius:12px}.hint{font-size:11px;color:#adc9ce} @media(max-width:390px){.tabs>button{font-size:9px}.tabs b{font-size:17px}}
-
-/* v0.4 / cinematic hangar background & industrial stencil typography */
-
-:root{--bg:#07090d;--card:#0c1320d6;--line:#8bb1cf63;--text:#f4f8ff;--muted:#c8d2e1;--blue:#8ec9ff;--gold:#efe0a0;--green:#68dab7;--danger:#ff6d6d;--danger2:#ffb0b0}
-html{background:#06090d}
-body{position:relative;isolation:isolate;min-height:100vh;background:transparent!important;font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif}
-body:before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(180deg,rgba(7,12,18,.60),rgba(8,11,18,.80) 38%,rgba(7,10,16,.90) 100%),linear-gradient(90deg,rgba(4,8,13,.68),rgba(4,8,13,.22) 20%,rgba(4,8,13,.22) 80%,rgba(4,8,13,.68)),url('./hangar-bg.jpg');background-position:center center,center center,center center;background-size:cover,cover,cover;background-repeat:no-repeat;opacity:1}
-body:after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 46px,rgba(142,201,255,.06) 47px 48px),repeating-linear-gradient(90deg,transparent 0 70px,rgba(239,224,160,.05) 71px 72px),radial-gradient(circle at 50% 12%,rgba(255,255,255,.07),transparent 18%),linear-gradient(180deg,transparent 0 70%,rgba(0,0,0,.24) 100%);opacity:.7;clip-path:none}
-header{position:relative;background:linear-gradient(180deg,#03080dbf,#06111a99);border-bottom:1px solid #cbad6a69;padding-top:calc(23px + env(safe-area-inset-top))}
-h1,.brand,.hero .brand,.stat strong,.money,.terminal-note,dialog:before{font-family:'Black Ops One','Impact','Arial Black',sans-serif;font-weight:400}
-h1{font-size:clamp(22px,6.7vw,33px);line-height:1.2;letter-spacing:.025em;color:#f9e0a7;text-shadow:0 2px 1px #000,0 0 18px #efb96e3c}
-.brand{letter-spacing:.07em;font-size:10px;color:#efcf91}
-header .sub{color:#e0d5c0}
-h2{font-weight:800;letter-spacing:.025em;text-shadow:0 1px #000}
-.hero{border-radius:4px;position:relative;background:linear-gradient(110deg,#101d25ea,#1d1b19d1);border:1px solid #c9a5639c;box-shadow:inset 0 1px #edc97d2a,0 8px 35px #000b;backdrop-filter:blur(7px)}
-.hero:after{content:'HANGAR  /  04';font-family:'Rajdhani',sans-serif;right:11px;top:8px;font-weight:700;letter-spacing:2px}
-.panel,.stat{border-radius:5px;background:linear-gradient(135deg,#121b23ed,#10151be3);border:1px solid #9e855984;box-shadow:inset 0 1px #ffe6b522,0 7px 26px #0007;backdrop-filter:blur(9px)}
-.stat{border-top:2px solid #d4b373aa}.stat strong{font-size:26px;letter-spacing:.015em;color:#f3d493}.stat span{font-weight:600}
-.primary,.secondary,.danger{border-radius:5px;box-shadow:inset 0 1px #fff2;letter-spacing:.01em}
-.primary{background:linear-gradient(120deg,#f3dba1,#be914e);border-color:#ffe3aa}
-.secondary{background:#15212bdc;border-color:#88aabb7a;color:#ecf4fa}
-.chip{border-radius:3px}
-.progress{border-radius:3px;background:#2c353b}.progress>div{border-radius:3px}
-.tabs{background:#090e15fa;border-top:1px solid #d3af6880;box-shadow:0 -7px 24px #0009;backdrop-filter:blur(12px)}
-.tabs button{font-family:'Rajdhani',-apple-system,sans-serif;letter-spacing:.015em;font-weight:700}
-.tabs button.active{color:#f9d18d;text-shadow:0 0 9px #ffc86661}
-dialog{border-radius:7px;background:linear-gradient(145deg,#0b2834,#08141dfc);border:1px solid #7bc7d4}
-dialog:before{font-size:10px;color:#80e6ea}
-input,textarea,select{border-radius:5px}
-@media (max-width:500px){body:before{background-position:center,center,center 36%;background-size:cover,cover,auto 100%} .stat strong{font-size:23px}header{padding-left:18px;padding-right:18px}}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
-
-/* v0.6 / supplied hangar background & terminal kit cards */
-.ms-name{font-family:'Black Ops One',-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#f8f4da;font-size:20px;line-height:1.1;text-shadow:0 0 16px #000,0 0 20px rgba(239,224,160,.18)}
-.panel .ms-name{margin:0}
-.item-name:not(.ms-name){font-size:16px}
-.panel,.hero,.stat{backdrop-filter:blur(10px);box-shadow:0 12px 26px rgba(0,0,0,.22)}
-.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(14,22,33,.86),rgba(11,17,27,.84) 66%,rgba(22,24,27,.80));border-color:rgba(142,201,255,.36)}
-.hero:before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(239,224,160,.10) 1px,transparent 1px) 0 0/22% 100%,linear-gradient(180deg,rgba(142,201,255,.10) 1px,transparent 1px) 0 0/100% 42px;opacity:.35}
-.section h2,.dialoghead h2{letter-spacing:.08em}
-.kit-card{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(11,20,30,.90),rgba(10,16,24,.94));border:1px solid rgba(126,175,219,.32)}
-.kit-card:before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.04),transparent 22%,transparent 78%,rgba(255,255,255,.03)),linear-gradient(180deg,rgba(142,201,255,.06),transparent 26%);opacity:1}
-.kit-card.status-repair{border-color:rgba(255,109,109,.68);box-shadow:0 0 0 1px rgba(255,109,109,.18) inset,0 12px 26px rgba(67,0,0,.25)}
-.kit-card.status-repair:before{background:linear-gradient(90deg,rgba(255,109,109,.10),transparent 24%,transparent 76%,rgba(255,109,109,.08)),linear-gradient(180deg,rgba(255,109,109,.11),transparent 40%)}
-.unit-terminal{position:relative;margin-bottom:10px;padding:12px 14px 10px;border:1px solid rgba(142,201,255,.30);border-radius:14px;background:linear-gradient(180deg,rgba(127,164,204,.10),rgba(13,18,26,.34));box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
-.unit-terminal:before{content:'';position:absolute;left:10px;right:10px;top:8px;height:1px;background:linear-gradient(90deg,transparent,rgba(142,201,255,.45),transparent)}
-.unit-terminal:after{content:'';position:absolute;right:10px;top:10px;width:54px;height:10px;border-radius:999px;background:linear-gradient(90deg,rgba(142,201,255,.10),rgba(142,201,255,.42));opacity:.8}
-.terminal-label{display:inline-block;margin-bottom:6px;padding:3px 8px;border:1px solid rgba(142,201,255,.26);border-radius:999px;color:#a9cff1;font-size:10px;letter-spacing:.18em;font-weight:700}
-.terminal-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
-.status-chip-repair{background:rgba(94,14,14,.55)!important;border-color:rgba(255,109,109,.62)!important;color:#ffd2d2!important}
-.repair-banner{display:block;margin:10px 0 8px;padding:7px 10px;border-radius:10px;border:1px solid rgba(255,109,109,.58);background:linear-gradient(90deg,rgba(97,12,12,.74),rgba(58,8,8,.88));color:#ffe0e0;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-.repair-details{margin-top:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,109,109,.36);background:rgba(93,14,14,.20);color:#ffd4d4;font-size:12px;line-height:1.55}
-.repair-details b{color:#fff0f0}
-.edit-btn{position:relative;z-index:1}
-
-
-/* v0.7 persistent tab and refresh button */
-.refresh-button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:56px;height:54px;padding:5px 9px;background:linear-gradient(145deg,#203040e8,#0d1721e8);border:1px solid #d1b5749c;border-radius:12px;color:#f0d28c;font-size:27px;line-height:1;box-shadow:0 0 16px #d7ae5521;flex-shrink:0}
-.refresh-button span{font:700 10px/1.3 -apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.05em}
-.refresh-button:active{background:#35404b}
-
-/* v1.2 COMMAND DECK VISUAL REFINEMENT: presentation only */
-body:before{background-image:linear-gradient(180deg,rgba(5,9,15,.72),rgba(6,10,18,.80) 40%,rgba(5,9,15,.89) 100%),linear-gradient(90deg,rgba(4,8,13,.56),rgba(4,8,13,.18) 25%,rgba(4,8,13,.18) 75%,rgba(4,8,13,.56)),url('./hangar-bg.jpg');filter:saturate(.85)}
-header{background:linear-gradient(150deg,#080e17ee,#111b29e9);border-bottom:1px solid #d3a95c8c;box-shadow:0 8px 32px #0008}
-header:before{content:'// HANGAR COMMAND NETWORK';display:block;font:600 10px 'Rajdhani',sans-serif;letter-spacing:.24em;color:#b8c7db;margin-bottom:12px}
-header h1{font-size:clamp(24px,7vw,35px);line-height:1.12;letter-spacing:.05em}
-.online-pill{display:inline-block;margin-left:5px;color:#89dab8;font:700 10px 'Rajdhani',sans-serif;letter-spacing:.08em}
-.command-kicker{font:700 11px 'Rajdhani',sans-serif;letter-spacing:.18em;color:#f0d18a;margin-bottom:12px}
-.command-metrics{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}
-.command-metrics span{font:700 12px 'Rajdhani',sans-serif;letter-spacing:.09em;padding:5px 9px;border:1px solid #cba35f70;background:#080f19c4;color:#dfd4bc;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%)}
-.hero{border-radius:5px;box-shadow:inset 0 0 0 1px #d6ad6030,0 0 27px #d0a05118;padding:20px}
-.hero:after{content:'SYS / 01';letter-spacing:.12em}
-.stat{border-radius:5px;position:relative;overflow:hidden;border-top:2px solid #e0bf80;box-shadow:0 12px 20px #0008}
-.stat:after{content:'';position:absolute;right:0;bottom:0;border-bottom:12px solid #c8a56d35;border-left:12px solid transparent}
-.stat strong{font-family:'Black Ops One',sans-serif;font-size:26px;line-height:1.5}
-.section h2{border-left:3px solid #dfbe7d;padding-left:12px;font-size:18px;text-shadow:0 2px 10px #000}
-.kit-card{border-radius:7px;padding:14px;border-left:3px solid #65b7e8;background:linear-gradient(135deg,#091a2cdb,#09121fe8);box-shadow:inset 0 0 0 1px #86c7ef10,0 10px 30px #0008}
-.kit-card.status-repair{border-left-color:#ff575e;background:linear-gradient(145deg,#281219ef,#140d18ec);box-shadow:inset 0 0 0 1px #ff68682a,0 10px 30px #0008,0 0 18px #e0282922}
-.kit-card.status-building{border-left-color:#65b7e8}
-.kit-card.status-hold{border-left-color:#e6b651;background:linear-gradient(145deg,#231d0ef0,#12151ded)}
-.kit-card.status-complete{border-left-color:#60c3a1;background:linear-gradient(145deg,#10251feb,#101923e9)}
-.kit-card.status-backlog{border-left-color:#7c8997;background:linear-gradient(145deg,#171d25ed,#111723e9)}
-.unit-terminal{border-radius:4px;clip-path:polygon(0 0,calc(100% - 11px) 0,100% 11px,100% 100%,0 100%);padding:16px 13px 12px}
-.terminal-label{border:0;padding:0;margin-bottom:9px;background:transparent;font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:.2em;color:#9cb8d5}
-.unit-led{width:7px;height:7px;border-radius:50%;position:absolute;right:18px;top:15px;background:#67cfff;box-shadow:0 0 10px #67cfff}
-.status-repair .unit-led{background:#ff6868;box-shadow:0 0 11px #ff5757}
-.status-hold .unit-led{background:#e5bf58;box-shadow:0 0 11px #e5bf58}
-.status-complete .unit-led{background:#60c3a1;box-shadow:0 0 11px #60c3a1}
-.status-backlog .unit-led{background:#8998a7;box-shadow:0 0 6px #8998a7}
-.ms-name{font-size:clamp(17px,5vw,22px);line-height:1.3;overflow-wrap:anywhere}
-.tabs{background:#070d15f5;backdrop-filter:blur(18px);border-top:2px solid #cba56b;box-shadow:0 -7px 26px #000b}
-.tabs button{position:relative;letter-spacing:.03em;transition:color .15s}
-.tabs button.active:before{content:'';position:absolute;left:26%;right:26%;top:-9px;height:2px;background:#f0d48e;box-shadow:0 0 12px #ffdd89}
-.tabs button.active b{text-shadow:0 0 10px #f1c779}
-.searchrow input,.searchrow select,#partSearch,#partKitFilter{border-radius:5px;background:#07131eec;border-color:#6095b16c}
-.toolrow,.part-line{border-left:3px solid #9fb6c7;border-radius:6px}
-.panel{border-radius:8px}
-.refresh-button{border-radius:5px}
-@media(max-width:375px){.command-metrics span{font-size:10px;padding:4px 6px}.ms-name{font-size:17px}}
-
-
-/* v1.2 — five-button menu and larger center home key */
-.tabs{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;gap:2px!important;padding:10px 7px calc(12px + env(safe-area-inset-bottom))!important}
-.tabs>button{width:100%!important;min-width:0!important;max-width:none!important;position:relative;font-size:10px!important;line-height:1.2;min-height:51px;padding:6px 1px!important;white-space:nowrap}
-.tabs>button b{display:block;font-size:20px!important;margin-bottom:3px}
-.tabs>button.home-tab{transform:translateY(-8px);border:1px solid rgba(238,210,151,.55);border-radius:17px 17px 12px 12px;min-height:64px;background:linear-gradient(180deg,rgba(79,64,43,.74),rgba(15,21,29,.94));box-shadow:0 0 20px rgba(231,194,121,.16);z-index:1;font-size:12px!important}
-.tabs>button.home-tab b{font-size:30px!important}
-.tabs>button.home-tab.active{box-shadow:0 0 26px rgba(243,204,124,.29),inset 0 1px rgba(255,236,193,.22)}
-.shell{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0a1120" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><title>GUNPLA HANGAR v1.2</title><style>@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+:root{
+  color-scheme:dark;
+  --bg:#04070d;
+  --bg2:#0b1220;
+  --panel:rgba(8,14,26,.72);
+  --panel-strong:rgba(8,14,26,.88);
+  --line:rgba(170,216,255,.26);
+  --line-strong:rgba(220,245,255,.74);
+  --glow:rgba(116,217,255,.42);
+  --cyan:#8fe9ff;
+  --blue:#79a8ff;
+  --gold:#ebd19b;
+  --red:#ff6d78;
+  --yellow:#ffd770;
+  --green:#7ef0c5;
+  --text:#edf6ff;
+  --muted:#9eb0c9;
+  --radius:18px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{
+  margin:0;
+  color:var(--text);
+  font:15px/1.55 'Rajdhani',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+  background:
+    linear-gradient(180deg,rgba(4,7,13,.86),rgba(4,7,13,.94)),
+    linear-gradient(90deg,rgba(120,190,255,.08) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(120,190,255,.06) 1px,transparent 1px),
+    url('hangar-bg.jpg') center/cover fixed no-repeat,
+    var(--bg);
+  background-size:auto, 32px 32px, 32px 32px, cover, auto;
+}
+a{color:var(--cyan)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+input,select,textarea{
+  width:100%;
+  border:1px solid rgba(173,221,255,.24);
+  background:rgba(6,12,24,.75);
+  color:var(--text);
+  border-radius:14px;
+  padding:12px 14px;
+  outline:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02), 0 0 0 0 rgba(127,225,255,0);
+}
+input:focus,select:focus,textarea:focus{border-color:rgba(143,233,255,.6);box-shadow:0 0 0 2px rgba(84,210,255,.14),0 0 22px rgba(84,210,255,.12)}
+label{display:block;margin:12px 0 0;color:#d4e7ff;font-weight:600;letter-spacing:.03em}
+textarea{min-height:92px;resize:vertical}
+header{position:sticky;top:0;z-index:15;backdrop-filter:blur(14px);background:linear-gradient(180deg,rgba(3,6,12,.94),rgba(3,6,12,.72));border-bottom:1px solid rgba(160,220,255,.16)}
+header::after{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,rgba(132,214,255,.9),transparent);opacity:.8}
+.header-wrap{padding:calc(14px + env(safe-area-inset-top)) 16px 14px;max-width:960px;margin:auto}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.brand{font-family:'Orbitron',sans-serif;color:var(--cyan);letter-spacing:.28em;font-size:10px;font-weight:700;text-transform:uppercase;opacity:.92}
+h1{font-family:'Orbitron',sans-serif;font-size:28px;line-height:1;margin:8px 0 6px;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 0 18px rgba(131,227,255,.13)}
+p{margin:6px 0}
+.sub,.small,.hint,.footer-note,.field-hint{color:var(--muted);font-size:12px}
+.online-pill{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;margin-left:8px;border:1px solid rgba(143,233,255,.24);border-radius:999px;background:rgba(12,24,44,.6);color:#caf4ff;font-size:10px;letter-spacing:.12em}
+.refresh-button,.primary,.secondary,.danger,.ghost-btn{
+  position:relative;
+  border-radius:14px;
+  border:1px solid rgba(160,220,255,.28);
+  background:linear-gradient(180deg,rgba(15,24,42,.96),rgba(8,14,26,.96));
+  color:var(--text);
+  padding:11px 15px;
+  font-weight:700;
+  letter-spacing:.05em;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 8px 24px rgba(0,0,0,.28);
+}
+.refresh-button::before,.primary::before,.secondary::before,.danger::before,.ghost-btn::before,
+.panel::before,.hero::before,.unit-terminal::before,.tabs>button::before,dialog form::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  clip-path:polygon(0 14px,14px 0,calc(100% - 24px) 0,100% 24px,100% calc(100% - 14px),calc(100% - 14px) 100%,18px 100%,0 calc(100% - 18px));
+  border:1px solid rgba(198,241,255,.12);
+}
+.primary{background:linear-gradient(180deg,rgba(30,76,132,.98),rgba(10,28,68,.98));border-color:rgba(123,176,255,.44);color:#edf7ff}
+.secondary,.refresh-button,.ghost-btn{background:linear-gradient(180deg,rgba(13,20,35,.94),rgba(8,14,26,.96))}
+.danger{background:linear-gradient(180deg,rgba(80,17,23,.98),rgba(40,8,14,.98));border-color:rgba(255,118,126,.42);color:#ffe4e7}
+.primary:hover,.secondary:hover,.danger:hover,.refresh-button:hover,.tabs>button:hover{transform:translateY(-1px)}
+.refresh-button{display:flex;align-items:center;gap:7px;min-width:82px;justify-content:center;font-size:13px}
+.refresh-button span{font-size:11px}
+.hide{display:none!important}
+.shell{max-width:960px;margin:auto;padding:16px 16px calc(120px + env(safe-area-inset-bottom))}
+.hero,.panel{
+  position:relative;
+  background:linear-gradient(180deg,rgba(8,14,26,.84),rgba(5,10,19,.8));
+  border:1px solid rgba(156,216,255,.2);
+  border-radius:var(--radius);
+  padding:16px;
+  margin:10px 0;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 34px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.hero::after,.panel::after,.unit-terminal::after{
+  content:'';position:absolute;left:12px;right:12px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(167,228,255,.75),transparent);opacity:.65
+}
+.hero strong{display:block;font-size:30px;line-height:1.12;margin:8px 0 6px;font-weight:700}
+.command-kicker,.terminal-note,.terminal-label{font-family:'Orbitron',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-size:11px}
+.command-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.command-metrics span,.chip,.tiny-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px solid rgba(166,221,255,.22);background:rgba(14,21,37,.66);color:#e4f4ff;font-size:11px;letter-spacing:.08em}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 20px}
+.stat{position:relative;background:linear-gradient(180deg,rgba(10,17,30,.82),rgba(6,11,22,.86));border:1px solid rgba(235,209,155,.35);border-radius:16px;padding:14px 14px 12px;overflow:hidden}
+.stat::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(235,209,155,.85),transparent)}
+.stat strong{display:block;font-family:'Orbitron',sans-serif;font-size:28px;line-height:1;color:var(--gold);margin-bottom:8px}
+.stat span{font-size:11px;color:#d9d2c0;letter-spacing:.12em;text-transform:uppercase}
+.section{margin-top:26px}
+.barline{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:10px}
+h2{font-family:'Orbitron',sans-serif;font-size:18px;letter-spacing:.12em;text-transform:uppercase;margin:0;color:#f5fbff}
+.money{font-family:'Orbitron',sans-serif}
+.searchrow,.two{display:grid;grid-template-columns:1fr 140px;gap:10px}.two{grid-template-columns:1fr 1fr}
+.item,.toolrow,.part-line{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.empty{text-align:center;padding:24px 16px;color:var(--muted)}
+.item-name{font-size:17px;font-weight:700;word-break:break-word}
+.ms-name{font-family:'Black Ops One','Orbitron',sans-serif;font-size:clamp(28px,4.7vw,42px);letter-spacing:.06em;line-height:1.05;text-transform:uppercase;color:#fbfdff;text-shadow:0 0 12px rgba(143,233,255,.12)}
+.unit-terminal{position:relative;padding:14px;border-radius:16px;background:linear-gradient(180deg,rgba(10,18,34,.84),rgba(7,13,25,.88));border:1px solid rgba(145,214,255,.22);margin-bottom:10px}
+.unit-led{position:absolute;right:18px;top:18px;width:88px;height:14px;border-radius:999px;background:linear-gradient(90deg,rgba(100,140,196,.18),rgba(127,214,255,.38));border:1px solid rgba(153,215,255,.18);box-shadow:0 0 14px rgba(91,210,255,.18)}
+.terminal-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{background:rgba(10,18,34,.76)}
+.status-chip-repair{border-color:rgba(255,112,123,.46);color:#ffd0d4;background:rgba(78,13,21,.6)}
+.repair-banner{display:block;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,103,114,.52);background:linear-gradient(180deg,rgba(105,11,24,.86),rgba(68,8,18,.76));font-family:'Orbitron',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ffecef;margin:12px 0 10px}
+.repair-details{padding:12px 14px;border-radius:14px;border:1px solid rgba(255,121,132,.28);background:rgba(73,13,23,.34);color:#fff0f2}
+.kit-card.status-repair{border-color:rgba(255,107,119,.45);box-shadow:0 0 0 1px rgba(255,107,119,.08),0 0 26px rgba(255,84,96,.08)}
+.kit-card.status-building{border-color:rgba(118,174,255,.38)}
+.kit-card.status-hold{border-color:rgba(255,214,102,.34)}
+.kit-card.status-complete{border-color:rgba(126,240,197,.34)}
+.kit-card.status-backlog{border-color:rgba(200,218,255,.2)}
+.progress{height:10px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;border:1px solid rgba(160,220,255,.16)}
+.progress>div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));box-shadow:0 0 16px rgba(127,230,255,.34)}
+.record-tabs,.actions.inline{display:flex;gap:8px;flex-wrap:wrap}
+.record-tabs button,.tiny,.x{border:1px solid rgba(160,220,255,.2);background:rgba(9,14,26,.82);color:var(--text);border-radius:12px;padding:8px 12px}
+.record-tabs button.sel{background:rgba(49,95,165,.82);border-color:rgba(123,176,255,.54)}
+.footer-note{text-align:center;margin-top:16px;letter-spacing:.08em}
+.tabs{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  display:flex;justify-content:center;align-items:flex-end;gap:8px;
+  padding:10px 10px calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(3,6,12,.12),rgba(3,6,12,.82) 28%,rgba(3,6,12,.95));
+  border-top:1px solid rgba(160,220,255,.14);
+  backdrop-filter:blur(16px);
+}
+.tabs>button{
+  position:relative;
+  background:rgba(8,14,26,.84);
+  border:1px solid rgba(150,214,255,.18);
+  color:var(--muted);
+  width:72px;
+  min-height:62px;
+  border-radius:18px;
+  font-size:12px;
+  padding:8px 4px 10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  box-shadow:0 10px 20px rgba(0,0,0,.25)
+}
+.tabs>button b{font-family:'Orbitron',sans-serif;font-size:20px;line-height:1;font-weight:700}
+.tabs>button.active{color:#f4fbff;border-color:rgba(143,233,255,.42);box-shadow:0 0 0 1px rgba(143,233,255,.1),0 0 24px rgba(84,210,255,.14),0 10px 20px rgba(0,0,0,.28)}
+.tabs>button.active::after{content:'';position:absolute;left:12px;right:12px;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.tabs>.home-tab{width:84px;min-height:74px;transform:translateY(-12px);border-color:rgba(235,209,155,.32);background:linear-gradient(180deg,rgba(27,35,56,.95),rgba(9,14,26,.98))}
+.tabs>.home-tab b{font-size:25px;color:var(--gold)}
+.tabs>.home-tab.active{box-shadow:0 0 0 1px rgba(235,209,155,.15),0 0 24px rgba(235,209,155,.12),0 12px 22px rgba(0,0,0,.3)}
+.tabs>.home-tab.active::after{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+dialog{width:min(92vw,680px);border:none;padding:0;background:transparent}
+dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
+dialog form,dialog>div{position:relative;background:linear-gradient(180deg,rgba(8,14,26,.95),rgba(5,10,19,.95));border:1px solid rgba(160,220,255,.22);border-radius:20px;padding:16px 16px 18px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.dialoghead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 16px 0;background:transparent!important;border:none!important;box-shadow:none!important}
+.dialoghead::before,.dialoghead::after{display:none}
+.x{width:42px;height:42px;padding:0;border-radius:12px;font-size:24px;line-height:1}
+.full{width:100%}
+.hiddenInput{display:none}
+.record-card,.part-line,.toolrow{gap:14px}
+.preview-list, #previewRecordImage{max-width:100%;border-radius:14px;border:1px solid rgba(160,220,255,.18);margin-top:10px}
+@media (max-width:720px){
+  .searchrow,.two{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  h1{font-size:24px}
+  .hero strong{font-size:26px}
+}
 </style></head><body>
-<header><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v1.2</div><h1>GUNPLA HANGAR</h1><p class="sub">PERSONAL HANGAR CONTROL <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>更新</span></button></div></header>
+<header><div class="header-wrap"><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v1.3</div><h1>GUNPLA HANGAR</h1><p class="sub">TACTICAL INVENTORY HUD <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>SYNC</span></button></div></div></header>
 <main class="shell">
-<section id="page-home"><div class="hero"><div class="command-kicker">COMMAND DECK // UNIT OPERATIONS</div><div class="command-metrics"><span id="commandDate">----</span><span id="commandUnits">00 UNITS</span><span id="commandRepair">00 REPAIR</span></div><strong>所有MSを登録・管理しよう。</strong><p class="small">データはこのiPhoneのブラウザ内に保存されます。</p><div class="actions" style="margin-top:12px"><button class="primary" id="quickAdd">＋ キット登録</button><button class="secondary" id="quickSupply">＋ 工具・塗料</button></div></div><div class="stats"><div class="stat"><strong id="countAll">0</strong><span>総キット数</span></div><div class="stat"><strong id="countBacklog">0</strong><span>積みプラ</span></div><div class="stat"><strong id="countDone">0</strong><span>完成</span></div></div><div class="section"><div class="barline"><h2>作業中のMS</h2><span class="small">製作中・修理中を表示</span></div><div id="working"></div></div><div class="section hide" aria-hidden="true"><h2>今月の購入予算</h2><div class="panel"><div class="barline"><div><div class="small">今月のキット・工具購入額</div><strong class="money" id="spendText">¥0 / ¥0</strong></div><button class="secondary tiny" id="changeBudget">予算変更</button></div><div class="progress"><div id="budgetBar" style="width:0%"></div></div><p class="small" id="budgetNote"></p></div></div></section>
+<section id="page-home"><div class="hero"><div class="command-kicker">TACTICAL HUD // INVENTORY STATUS</div><div class="command-metrics"><span id="commandDate">----</span><span id="commandUnits">00 UNITS</span><span id="commandRepair">00 REPAIR</span></div><strong>所有MS・パーツ・工具を管理しよう。</strong><p class="small">データはこのSafari内に保存。復旧用にJSONバックアップも可能。</p><div class="actions" style="margin-top:12px"><button class="primary" id="quickAdd">＋ キット登録</button><button class="secondary" id="quickSupply">＋ 工具・塗料</button></div></div><div class="stats"><div class="stat"><strong id="countAll">0</strong><span>総キット数</span></div><div class="stat"><strong id="countBacklog">0</strong><span>積みプラ</span></div><div class="stat"><strong id="countDone">0</strong><span>完成</span></div></div><div class="section"><div class="barline"><h2>注視中のMS</h2><span class="small">製作中・修理中を自動抽出</span></div><div id="working"></div></div></section>
 <section class="hide" id="page-kits"><div class="barline"><h2>格納MS / UNIT DATABASE</h2><button class="primary tiny" id="addKit">＋ 追加</button></div><div class="searchrow"><input id="filterText" placeholder="キット名・メモで検索"/><select id="filterStatus" style="width:136px"><option value="">すべて</option><option>積みプラ</option><option>製作中</option><option>完成</option><option>修理中</option><option>保留</option><option>欲しい</option></select></div><div id="kitList"></div></section>
-<section class="hide" id="page-parts"><div class="barline"><h2>パーツ管理 / REQUISITION</h2><button class="primary tiny" id="addPart">＋ パーツ登録</button></div><p class="small">欲しい・注文中・入手済みのパーツを機体別に管理。</p><div class="panel"><label>MSで絞り込み<select id="partKitFilter"><option value="">すべてのMS</option></select></label><label>パーツ名・番号で検索<input id="partSearch" placeholder="パーツ番号・名前"/></label></div><div id="partsList"></div></section><section class="hide" id="page-supplies"><div class="barline"><h2>工具管理 / EQUIPMENT</h2><button class="primary tiny" id="addSupply">＋ 追加</button></div><div id="supplyList"></div></section>
+<section class="hide" id="page-parts"><div class="barline"><h2>パーツ管理 / REQUISITION</h2><button class="primary tiny" id="addPart">＋ パーツ登録</button></div><p class="small">欲しい・注文中・入手済みのパーツを機体別に管理。</p><div class="panel"><label>MSで絞り込み<select id="partKitFilter"><option value="">すべてのMS</option></select></label><label>パーツ名・番号で検索<input id="partSearch" placeholder="パーツ番号・名前"/></label></div><div id="partsList"></div></section><section class="hide" id="page-supplies"><div class="barline"><h2>工具管理 / EQUIPMENT LOCKER</h2><button class="primary tiny" id="addSupply">＋ 追加</button></div><div id="supplyList"></div></section>
 <section class="hide" id="page-records"><button class="secondary tiny" id="backFromRecords" type="button">← 設定に戻る</button><div class="barline"><h2>製作ログ</h2><button class="primary tiny" id="addRecord">＋ 記録する</button></div><p class="small">製作日記・破損パーツ・写真をキットごとに管理します。</p><div class="record-tabs"><button class="sel" data-record-filter="all" type="button">すべて</button><button data-record-filter="damage" type="button">破損・修理</button><button data-record-filter="journal" type="button">日記・写真</button></div><div id="recordList"></div></section>
-<section class="hide" id="page-data"><h2>設定・バックアップ</h2><div class="panel"><h2>製作・整備の記録</h2><p class="small">以前の製作記録や修理ログは引き続き利用できます。</p><button class="secondary" id="openRecords" type="button">製作記録を開く</button></div><p class="hint">旧バージョンの登録キット・工具・パーツ・記録はそのまま引き継ぎます。JSONバックアップにも含まれます。</p><div class="panel"><h2>データ保護</h2><p id="storageDiagnostics" class="hint" role="status">保存状況を確認しています…</p><p class="small">Safariの履歴やWebサイトデータを削除すると記録が消える場合があります。JSONを「ファイル」アプリに定期的に保存してください。</p><div class="actions"><button class="primary" id="exportBtn">バックアップ保存</button><button class="secondary" id="importBtn">バックアップ復元</button><input accept="application/json,.json" class="hiddenInput" id="importFile" type="file"/></div></div><div class="panel"><h2>保存とプライバシー</h2><p class="small">ログイン・サーバー送信・追加アプリ不要。端末・ブラウザごとにデータは別管理です。ブラウザのストレージ容量・保持期間に制限があります。</p></div><div class="panel"><button class="danger" id="resetBtn">すべてのデータを削除</button></div><p class="footer-note">GUNPLA HANGAR v1.2 • GitHub Pages対応 • オフライン編集可（初回ページ読み込み後の状況に依存）</p></section>
+<section class="hide" id="page-data"><h2>設定・バックアップ / SYSTEM</h2><div class="panel"><h2>製作・整備の記録</h2><p class="small">以前の製作記録や修理ログは引き続き利用できます。</p><button class="secondary" id="openRecords" type="button">製作記録を開く</button></div><p class="hint">旧バージョンの登録キット・工具・パーツ・記録はそのまま引き継ぎます。JSONバックアップにも含まれます。</p><div class="panel"><h2>データ保護</h2><p id="storageDiagnostics" class="hint" role="status">保存状況を確認しています…</p><p class="small">Safariの履歴やWebサイトデータを削除すると記録が消える場合があります。v1.3では再表示・Safari復帰時に自動同期を試みますが、確実性のためJSONを「ファイル」アプリに定期保存してください。</p><div class="actions"><button class="primary" id="exportBtn">バックアップ保存</button><button class="secondary" id="importBtn">バックアップ復元</button><input accept="application/json,.json" class="hiddenInput" id="importFile" type="file"/></div></div><div class="panel"><h2>保存とプライバシー</h2><p class="small">ログイン・サーバー送信・追加アプリ不要。端末・ブラウザごとにデータは別管理です。ブラウザのストレージ容量・保持期間に制限があります。</p></div><div class="panel"><button class="danger" id="resetBtn">すべてのデータを削除</button></div><p class="footer-note">GUNPLA HANGAR v1.3 • SF HUD EDITION • Safari復帰時の自動同期を追加</p></section>
 </main>
 <nav class="tabs" aria-label="メインメニュー"><button data-page="supplies"><b>⚒</b>工具</button><button data-page="parts"><b>◇</b>パーツ</button><button class="active home-tab" data-page="home"><b>⌂</b>ホーム</button><button data-page="kits"><b>▣</b>格納MS</button><button data-page="data"><b>⚙</b>設定</button></nav>
 <dialog id="kitDialog"><div class="dialoghead"><h2 id="kitDialogTitle">キット登録</h2><button class="x" data-close="kitDialog" type="button">×</button></div><form id="kitForm"><input name="id" type="hidden"/><label>キット名（必須）<input maxlength="120" name="name" placeholder="例：MGEX ストライクフリーダム" required=""/></label><div class="two"><label>グレード<select name="grade"><option>HG</option><option>RG</option><option>MG</option><option>MGEX</option><option>PG</option><option>SD</option><option>その他</option></select></label><label>状態<select name="status"><option>積みプラ</option><option>製作中</option><option>完成</option><option>修理中</option><option>保留</option><option>欲しい</option></select></label></div><label>購入金額（任意・記録用）<input min="0" name="price" placeholder="未入力でもOK" step="1" type="number"/></label><label>購入日<input name="date" type="date"/></label><label>メモ<textarea maxlength="2000" name="note" placeholder="製作状況・塗装予定など"></textarea></label><div class="form-optional"><div class="terminal-note">REPAIR RECORD / 任意入力</div><label>破損箇所（任意）<input maxlength="160" name="damageLocation" placeholder="例：右ドラグーン接続部"/></label><label>パーツ番号（任意）<input maxlength="120" name="partNumber" placeholder="例：G45"/></label><p class="hint">修理中のMSカードに表示されます。空欄のまま登録可能です。</p></div><button class="primary full" type="submit">保存する</button><button class="danger full hide" id="deleteKit" type="button">このキットを削除</button></form></dialog>
@@ -132,7 +194,7 @@ header h1{font-size:clamp(24px,7vw,35px);line-height:1.12;letter-spacing:.05em}
 <dialog id="recordDialog"><div class="dialoghead"><h2 id="recordDialogTitle">製作記録を追加</h2><button class="x" data-close="recordDialog" type="button">×</button></div><form id="recordForm"><input name="id" type="hidden"/><label>記録の種類<select id="recordKind" name="kind"><option value="journal">製作日記</option><option value="damage">破損・修理</option><option value="photo">写真記録</option></select></label><label>対象キット<select id="recordKit" name="kitId"></select></label><label>記録日<input name="date" required="" type="date"/></label><label>タイトル<input maxlength="100" name="title" placeholder="例：ドラグーン接続パーツの破損" required=""/></label><div id="damageFields"><label>パーツ番号・箇所<input maxlength="100" name="part" placeholder="例：G45／右ドラグーン接続部"/></label><label>対応状況<select name="repairStatus"><option>破損確認</option><option>交換品手配中</option><option>部品到着</option><option>修理作業中</option><option>修理完了</option></select></label><label>修理費用（円）<input max="99999999" min="0" name="repairCost" placeholder="未入力でもOK" type="number"/></label></div><label>内容・メモ<textarea maxlength="2500" name="note" placeholder="作業内容、破損状態、修理手順など" rows="3"></textarea></label><label>画像（任意・1枚）<input accept="image/*" id="recordPhoto" type="file"/></label><span class="field-hint">画像は端末内で縮小して保存します。大量の画像はSafariの容量上限に注意してください。</span><img alt="写真プレビュー" class="hide" id="previewRecordImage"/><div class="actions"><button class="primary" type="submit">保存する</button><button class="secondary" id="deleteRecord" style="display:none" type="button">削除</button></div></form></dialog>
 <dialog id="budgetDialog"><div class="dialoghead"><h2>月間予算</h2><button class="x" data-close="budgetDialog" type="button">×</button></div><form id="budgetForm"><label>月間予算（円）<input min="0" name="budget" required="" step="1" type="number"/></label><button class="primary full">保存</button></form></dialog>
 <script>
-(()=>{'use strict';const KEY='gunpla-hangar-v1';const $=s=>document.querySelector(s);const yen=n=>'¥'+Math.round(Number(n)||0).toLocaleString('ja-JP');const uid=()=>crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const dataDefault=()=>({kits:[],supplies:[],records:[],budget:30000});let db;try{db=JSON.parse(localStorage.getItem(KEY))||dataDefault()}catch{db=dataDefault()}if(!Array.isArray(db.kits))db.kits=[];if(!Array.isArray(db.supplies))db.supplies=[];if(!Array.isArray(db.records))db.records=[];if(!Array.isArray(db.parts))db.parts=[];if(!Number.isFinite(Number(db.budget)))db.budget=30000;const save=()=>{try{const v=JSON.stringify(db);localStorage.setItem(KEY,v);if(localStorage.getItem(KEY)!==v)throw Error('保存内容を確認できません');return true}catch(e){alert('保存に失敗しました。記録は確定していません。Safariの通常タブで開き、保存容量と設定を確認してください。\n'+e.message);return false}};const empty=(msg)=>`<div class="panel empty">${esc(msg)}</div>`;const cardKit=k=>`<div class="panel kit-card ${k.status==='修理中'?'status-repair':''} ${k.status==='製作中'?'status-building':''} ${k.status==='保留'?'status-hold':''} ${k.status==='完成'?'status-complete':''} ${k.status==='積みプラ'?'status-backlog':''}"><div class="item"><div style="flex:1"><div class="unit-terminal"><div class="terminal-label">UNIT NAME / ${esc(k.grade)}</div><div class="unit-led" aria-hidden="true"></div><div class="item-name ms-name">${esc(k.name)}</div><div class="terminal-meta"><span class="chip">${esc(k.grade)}</span><span class="chip ${k.status==='修理中'?'status-chip-repair':''}">${esc(k.status)}</span>${k.price!==''&&k.price!=null?`<span class="chip">${yen(k.price)}</span>`:''}</div></div>${k.status==='修理中'?`<span class="repair-banner">WARNING / UNDER REPAIR</span>`:''}${k.status==='修理中'&&(k.damageLocation||k.partNumber)?`<div class="repair-details">${k.damageLocation?`<div><b>破損箇所</b> : ${esc(k.damageLocation)}</div>`:''}${k.partNumber?`<div><b>パーツ番号</b> : ${esc(k.partNumber)}</div>`:''}</div>`:''}${k.note?`<p class="small">${esc(k.note).replace(/\n/g,'<br>')}</p>`:''}</div><button class="secondary tiny edit-btn" data-edit-kit="${esc(k.id)}">編集</button></div></div>`;const cardSupply=s=>`<div class="panel toolrow"><div><div class="item-name">${esc(s.name)}</div><span class="chip">${esc(s.kind)}</span><span class="chip">${s.owned==='yes'?'保有中':'購入予定'}</span>${s.price!==''&&s.price!=null?`<span class="chip">${yen(s.price)}</span>`:''}${s.note?`<p class="small">${esc(s.note).replace(/\n/g,'<br>')}</p>`:''}</div><button class="secondary tiny" data-edit-supply="${esc(s.id)}">編集</button></div>`;function render(){const ks=db.kits;const cmdDate=document.getElementById("commandDate"),cmdUnits=document.getElementById("commandUnits"),cmdRepair=document.getElementById("commandRepair");if(cmdDate)cmdDate.textContent=new Date().toLocaleDateString("ja-JP",{year:"numeric",month:"2-digit",day:"2-digit"});if(cmdUnits)cmdUnits.textContent=String(ks.filter(x=>x.status!=="欲しい").length).padStart(2,"0")+" UNITS";if(cmdRepair)cmdRepair.textContent=String(ks.filter(x=>x.status==="修理中").length).padStart(2,"0")+" REPAIR";$('#countAll').textContent=ks.filter(x=>x.status!=='欲しい').length;$('#countBacklog').textContent=ks.filter(x=>x.status==='積みプラ').length;$('#countDone').textContent=ks.filter(x=>x.status==='完成').length;const current=ks.filter(x=>x.status==='製作中'||x.status==='修理中').sort((a,b)=>(a.status==='修理中'?0:1)-(b.status==='修理中'?0:1));$('#working').innerHTML=current.length?current.map(cardKit).join(''):empty('現在、製作中・修理中のMSはありません。格納MSで状態を確認してください。');const month=new Date().toLocaleDateString('en-CA',{year:'numeric',month:'2-digit'});const purchases=[...ks,...db.supplies].filter(x=>x.date&&x.date.startsWith(month)&&!(x.status==='欲しい'||x.owned==='no')).reduce((n,x)=>n+(Number(x.price)||0),0);$('#spendText').textContent=yen(purchases)+' / '+yen(db.budget);$('#budgetBar').style.width=(Number(db.budget)>0?Math.min(100,purchases/Number(db.budget)*100):0)+'%';$('#budgetNote').textContent='購入日・金額を登録した品目で集計（購入日未入力は対象外）';const q=$('#filterText').value.toLowerCase(),status=$('#filterStatus').value;const filtered=ks.filter(x=>(!status||x.status===status)&&`${x.name} ${x.note}`.toLowerCase().includes(q));$('#kitList').innerHTML=filtered.length?filtered.map(cardKit).join(''):empty('該当するキットはありません。');$('#supplyList').innerHTML=db.supplies.length?db.supplies.map(cardSupply).join(''):empty('工具・塗料を登録してみよう。');renderParts()}function openDialog(name,obj){const type=name==='kit'?'kit':'supply',form=$('#'+type+'Form');form.reset();form.elements.id.value='';$('#'+type+'DialogTitle').textContent=type==='kit'?'キット登録':'工具・塗料登録';$('#delete'+(type==='kit'?'Kit':'Supply')).classList.add('hide');if(obj){for(const [k,v] of Object.entries(obj)){if(form.elements[k])form.elements[k].value=v??''}$('#'+type+'DialogTitle').textContent='登録内容を編集';$('#delete'+(type==='kit'?'Kit':'Supply')).classList.remove('hide')}$('#'+type+'Dialog').showModal()}function saveForm(e,type){e.preventDefault();const o=Object.fromEntries(new FormData(e.target));if(!o.name.trim())return alert('名前を入力してください');o.name=o.name.trim();o.id=o.id||uid();const list=type==='kit'?db.kits:db.supplies;const idx=list.findIndex(x=>x.id===o.id);const previous=idx>=0?list[idx]:null;if(idx>=0)list[idx]=o;else list.unshift(o);if(!save()){if(idx>=0)list[idx]=previous;else list.splice(list.findIndex(x=>x.id===o.id),1);return}render();$('#'+type+'Dialog').close()}const VIEW_KEY='gunpla-hangar-current-view-v1';
+(()=>{'use strict';const KEY='gunpla-hangar-v1';const $=s=>document.querySelector(s);const yen=n=>'¥'+Math.round(Number(n)||0).toLocaleString('ja-JP');const uid=()=>crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const dataDefault=()=>({kits:[],supplies:[],records:[],budget:30000});let db;try{db=JSON.parse(localStorage.getItem(KEY))||dataDefault()}catch{db=dataDefault()}if(!Array.isArray(db.kits))db.kits=[];if(!Array.isArray(db.supplies))db.supplies=[];if(!Array.isArray(db.records))db.records=[];if(!Array.isArray(db.parts))db.parts=[];if(!Number.isFinite(Number(db.budget)))db.budget=30000;const save=()=>{try{const v=JSON.stringify(db);localStorage.setItem(KEY,v);if(localStorage.getItem(KEY)!==v)throw Error('保存内容を確認できません');return true}catch(e){alert('保存に失敗しました。記録は確定していません。Safariの通常タブで開き、保存容量と設定を確認してください。\n'+e.message);return false}};const empty=(msg)=>`<div class="panel empty">${esc(msg)}</div>`;const cardKit=k=>`<div class="panel kit-card ${k.status==='修理中'?'status-repair':''} ${k.status==='製作中'?'status-building':''} ${k.status==='保留'?'status-hold':''} ${k.status==='完成'?'status-complete':''} ${k.status==='積みプラ'?'status-backlog':''}"><div class="item"><div style="flex:1"><div class="unit-terminal"><div class="terminal-label">UNIT NAME / ${esc(k.grade)}</div><div class="unit-led" aria-hidden="true"></div><div class="item-name ms-name">${esc(k.name)}</div><div class="terminal-meta"><span class="chip">${esc(k.grade)}</span><span class="chip ${k.status==='修理中'?'status-chip-repair':''}">${esc(k.status)}</span>${k.price!==''&&k.price!=null?`<span class="chip">${yen(k.price)}</span>`:''}</div></div>${k.status==='修理中'?`<span class="repair-banner">WARNING / UNDER REPAIR</span>`:''}${k.status==='修理中'&&(k.damageLocation||k.partNumber)?`<div class="repair-details">${k.damageLocation?`<div><b>破損箇所</b> : ${esc(k.damageLocation)}</div>`:''}${k.partNumber?`<div><b>パーツ番号</b> : ${esc(k.partNumber)}</div>`:''}</div>`:''}${k.note?`<p class="small">${esc(k.note).replace(/\n/g,'<br>')}</p>`:''}</div><button class="secondary tiny edit-btn" data-edit-kit="${esc(k.id)}">編集</button></div></div>`;const cardSupply=s=>`<div class="panel toolrow"><div><div class="item-name">${esc(s.name)}</div><span class="chip">${esc(s.kind)}</span><span class="chip">${s.owned==='yes'?'保有中':'購入予定'}</span>${s.price!==''&&s.price!=null?`<span class="chip">${yen(s.price)}</span>`:''}${s.note?`<p class="small">${esc(s.note).replace(/\n/g,'<br>')}</p>`:''}</div><button class="secondary tiny" data-edit-supply="${esc(s.id)}">編集</button></div>`;function render(){const ks=db.kits;const cmdDate=document.getElementById("commandDate"),cmdUnits=document.getElementById("commandUnits"),cmdRepair=document.getElementById("commandRepair");if(cmdDate)cmdDate.textContent=new Date().toLocaleDateString("ja-JP",{year:"numeric",month:"2-digit",day:"2-digit"});if(cmdUnits)cmdUnits.textContent=String(ks.filter(x=>x.status!=="欲しい").length).padStart(2,"0")+" UNITS";if(cmdRepair)cmdRepair.textContent=String(ks.filter(x=>x.status==="修理中").length).padStart(2,"0")+" REPAIR";$('#countAll').textContent=ks.filter(x=>x.status!=='欲しい').length;$('#countBacklog').textContent=ks.filter(x=>x.status==='積みプラ').length;$('#countDone').textContent=ks.filter(x=>x.status==='完成').length;const current=ks.filter(x=>x.status==='製作中'||x.status==='修理中').sort((a,b)=>(a.status==='修理中'?0:1)-(b.status==='修理中'?0:1));$('#working').innerHTML=current.length?current.map(cardKit).join(''):empty('現在、製作中・修理中のMSはありません。格納MSで状態を確認してください。');const month=new Date().toLocaleDateString('en-CA',{year:'numeric',month:'2-digit'});const purchases=[...ks,...db.supplies].filter(x=>x.date&&x.date.startsWith(month)&&!(x.status==='欲しい'||x.owned==='no')).reduce((n,x)=>n+(Number(x.price)||0),0);const spendEl=$('#spendText'),barEl=$('#budgetBar'),noteEl=$('#budgetNote');if(spendEl)spendEl.textContent=yen(purchases)+' / '+yen(db.budget);if(barEl)barEl.style.width=(Number(db.budget)>0?Math.min(100,purchases/Number(db.budget)*100):0)+'%';if(noteEl)noteEl.textContent='購入日・金額を登録した品目で集計（購入日未入力は対象外）';const q=$('#filterText').value.toLowerCase(),status=$('#filterStatus').value;const filtered=ks.filter(x=>(!status||x.status===status)&&`${x.name} ${x.note}`.toLowerCase().includes(q));$('#kitList').innerHTML=filtered.length?filtered.map(cardKit).join(''):empty('該当するキットはありません。');$('#supplyList').innerHTML=db.supplies.length?db.supplies.map(cardSupply).join(''):empty('工具・塗料を登録してみよう。');renderParts()}function openDialog(name,obj){const type=name==='kit'?'kit':'supply',form=$('#'+type+'Form');form.reset();form.elements.id.value='';$('#'+type+'DialogTitle').textContent=type==='kit'?'キット登録':'工具・塗料登録';$('#delete'+(type==='kit'?'Kit':'Supply')).classList.add('hide');if(obj){for(const [k,v] of Object.entries(obj)){if(form.elements[k])form.elements[k].value=v??''}$('#'+type+'DialogTitle').textContent='登録内容を編集';$('#delete'+(type==='kit'?'Kit':'Supply')).classList.remove('hide')}$('#'+type+'Dialog').showModal()}function saveForm(e,type){e.preventDefault();const o=Object.fromEntries(new FormData(e.target));if(!o.name.trim())return alert('名前を入力してください');o.name=o.name.trim();o.id=o.id||uid();const list=type==='kit'?db.kits:db.supplies;const idx=list.findIndex(x=>x.id===o.id);const previous=idx>=0?list[idx]:null;if(idx>=0)list[idx]=o;else list.unshift(o);if(!save()){if(idx>=0)list[idx]=previous;else list.splice(list.findIndex(x=>x.id===o.id),1);return}render();$('#'+type+'Dialog').close()}const VIEW_KEY='gunpla-hangar-current-view-v1';
 function activateTab(page,scrollTop=true){
  const btn=document.querySelector(`.tabs button[data-page="${page}"]`);
  if(!btn)return;
@@ -160,23 +222,32 @@ function inspectStorage(){
    return undefined;
  }
 }
-$('#refreshView').addEventListener('click',()=>{
+function syncFromStorage({confirmIfLess=false,keepPosition=true}={}){
  const currentPage=document.querySelector('.tabs button.active')?.dataset.page||'home';
  const scrollY=window.scrollY;
  const latest=inspectStorage();
- if(latest===undefined){alert('保存データの読み込みに失敗しました。上書きせず、バックアップを確認してください。');return;}
+ if(latest===undefined)return false;
  if(latest===null){
-  if(db.kits.length||db.supplies.length||db.parts.length||db.records.length){alert('保存先に登録データが見つかりません。画面上の情報を保護するため更新を中止しました。設定からバックアップを保存してください。');return;}
- }else if(latest.kits.length<db.kits.length||latest.supplies.length<db.supplies.length||latest.parts.length<db.parts.length||latest.records.length<db.records.length){
-   if(!confirm('保存先の登録件数が現在の画面より少なくなっています。保存先を読み直しますか？\nキャンセルすると現在の表示を維持します。'))return;
+   if(db.kits.length||db.supplies.length||db.parts.length||db.records.length){
+     if(confirmIfLess)alert('保存先に登録データが見つかりません。画面上の情報を保護するため読み直しを中止しました。設定からバックアップを保存してください。');
+     return false;
+   }
+ }else if(confirmIfLess&&(latest.kits.length<db.kits.length||latest.supplies.length<db.supplies.length||latest.parts.length<db.parts.length||latest.records.length<db.records.length)){
+   if(!confirm('保存先の登録件数が現在の画面より少なくなっています。保存先を読み直しますか？\nキャンセルすると現在の表示を維持します。'))return false;
  }
  if(latest)db=latest;
  render();renderRecords();activateTab(currentPage,false);
- requestAnimationFrame(()=>window.scrollTo(0,scrollY));
+ if(keepPosition)requestAnimationFrame(()=>window.scrollTo(0,scrollY));
  inspectStorage();
+ return true;
+}
+$('#refreshView').addEventListener('click',()=>{
+ if(!syncFromStorage({confirmIfLess:true,keepPosition:true}))return;
 });
+window.addEventListener('pageshow',()=>{syncFromStorage({confirmIfLess:false,keepPosition:false});});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncFromStorage({confirmIfLess:false,keepPosition:false});});
 inspectStorage();
-$('#quickAdd').onclick=$('#addKit').onclick=()=>openDialog('kit');$('#quickSupply').onclick=$('#addSupply').onclick=()=>openDialog('supply');$('#kitForm').onsubmit=e=>saveForm(e,'kit');$('#supplyForm').onsubmit=e=>saveForm(e,'supply');$('#filterText').oninput=$('#filterStatus').onchange=render;document.addEventListener('click',e=>{const ek=e.target.closest('[data-edit-kit]'),es=e.target.closest('[data-edit-supply]');if(ek)openDialog('kit',db.kits.find(x=>x.id===ek.dataset.editKit));if(es)openDialog('supply',db.supplies.find(x=>x.id===es.dataset.editSupply));const close=e.target.closest('[data-close]');if(close)$('#'+close.dataset.close).close()});function remove(type){const form=$('#'+type+'Form'),id=form.elements.id.value;if(!id||!confirm('本当に削除しますか？'))return;db[type==='kit'?'kits':'supplies']=db[type==='kit'?'kits':'supplies'].filter(x=>x.id!==id);save();render();$('#'+type+'Dialog').close()}$('#deleteKit').onclick=()=>remove('kit');$('#deleteSupply').onclick=()=>remove('supply');$('#changeBudget').onclick=()=>{$('#budgetForm').elements.budget.value=db.budget;$('#budgetDialog').showModal()};$('#budgetForm').onsubmit=e=>{e.preventDefault();db.budget=Number(e.target.elements.budget.value)||0;save();render();$('#budgetDialog').close()};$('#exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({...db,exportedAt:new Date().toISOString(),version:3},null,2)],{type:'application/json'});const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download='gunpla-hangar-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)};$('#importBtn').onclick=()=>$('#importFile').click();$('#importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{if(f.size>5e6)throw Error('ファイルが大きすぎます');const d=JSON.parse(await f.text());if(!Array.isArray(d.kits)||!Array.isArray(d.supplies)||!Number.isFinite(Number(d.budget)))throw Error('バックアップの形式が違います');if(!confirm('現在の記録をバックアップの内容で置き換えます。続けますか？'))return;db={kits:d.kits,supplies:d.supplies,records:Array.isArray(d.records)?d.records:[],parts:Array.isArray(d.parts)?d.parts:[],budget:Number(d.budget)};save();render();alert('復元しました')}catch(err){alert('復元できません: '+err.message)}finally{e.target.value=''}};$('#resetBtn').onclick=()=>{if(!confirm('すべての登録データを消去します。本当に続けますか？'))return;if(!confirm('元に戻せません。削除しますか？'))return;db=dataDefault();save();render()};
+$('#quickAdd').onclick=$('#addKit').onclick=()=>openDialog('kit');$('#quickSupply').onclick=$('#addSupply').onclick=()=>openDialog('supply');$('#kitForm').onsubmit=e=>saveForm(e,'kit');$('#supplyForm').onsubmit=e=>saveForm(e,'supply');$('#filterText').oninput=$('#filterStatus').onchange=render;document.addEventListener('click',e=>{const ek=e.target.closest('[data-edit-kit]'),es=e.target.closest('[data-edit-supply]');if(ek)openDialog('kit',db.kits.find(x=>x.id===ek.dataset.editKit));if(es)openDialog('supply',db.supplies.find(x=>x.id===es.dataset.editSupply));const close=e.target.closest('[data-close]');if(close)$('#'+close.dataset.close).close()});function remove(type){const form=$('#'+type+'Form'),id=form.elements.id.value;if(!id||!confirm('本当に削除しますか？'))return;db[type==='kit'?'kits':'supplies']=db[type==='kit'?'kits':'supplies'].filter(x=>x.id!==id);save();render();$('#'+type+'Dialog').close()}$('#deleteKit').onclick=()=>remove('kit');$('#deleteSupply').onclick=()=>remove('supply');const changeBudgetBtn=$('#changeBudget');if(changeBudgetBtn)changeBudgetBtn.onclick=()=>{$('#budgetForm').elements.budget.value=db.budget;$('#budgetDialog').showModal()};const budgetForm=$('#budgetForm');if(budgetForm)budgetForm.onsubmit=e=>{e.preventDefault();db.budget=Number(e.target.elements.budget.value)||0;save();render();$('#budgetDialog').close()};$('#exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({...db,exportedAt:new Date().toISOString(),version:3},null,2)],{type:'application/json'});const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download='gunpla-hangar-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)};$('#importBtn').onclick=()=>$('#importFile').click();$('#importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{if(f.size>5e6)throw Error('ファイルが大きすぎます');const d=JSON.parse(await f.text());if(!Array.isArray(d.kits)||!Array.isArray(d.supplies)||!Number.isFinite(Number(d.budget)))throw Error('バックアップの形式が違います');if(!confirm('現在の記録をバックアップの内容で置き換えます。続けますか？'))return;db={kits:d.kits,supplies:d.supplies,records:Array.isArray(d.records)?d.records:[],parts:Array.isArray(d.parts)?d.parts:[],budget:Number(d.budget)};save();render();alert('復元しました')}catch(err){alert('復元できません: '+err.message)}finally{e.target.value=''}};$('#resetBtn').onclick=()=>{if(!confirm('すべての登録データを消去します。本当に続けますか？'))return;if(!confirm('元に戻せません。削除しますか？'))return;db=dataDefault();save();render()};
 // v0.2 record extension, same localStorage key as v0.1
 let currentRecordFilter='all';
 const recordKindLabels={journal:'製作日記',damage:'破損・修理',photo:'写真'};
