@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0a1120" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><title>GUNPLA HANGAR v1.5</title><style>@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0a1120" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><title>GUNPLA HANGAR v1.6</title><style>@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
 :root{
   color-scheme:dark;
   --bg:#04070d;
@@ -260,14 +260,62 @@ input:focus,select:focus,textarea:focus{border-color:#00eeff!important;outline:2
 .hint{border-left:3px solid #00eaff}
 @media(max-width:390px){.hero,.panel{padding:13px}.stat{padding:11px 7px}.tabs{gap:3px}.tabs>button{font-size:10px}}
 
+
+/* v1.6 -- dynamic machine color palettes; alert red remains a fixed safety signal */
+:root{--ms-core:#00eaff;--ms-rail:#11dbf5;--ms-edge:#12bfe9;--ms-ink:#06182b;--ms-panel:#07172a;--ms-panel2:#020914;--ms-primary:#146ad4;--ms-primary2:#083684;--ms-gold:#ffd344;--ms-strong:#ffffff;--ms-halo:#00a3ff38;--ms-stat:#f2c343}
+:root[data-ms-theme="strike"]{--ms-core:#00dfff;--ms-rail:#176fff;--ms-edge:#20bfff;--ms-primary:#145ff2;--ms-primary2:#083491;--ms-gold:#ffce27;--ms-stat:#ffce27;--ms-panel:#081c38;--ms-panel2:#020a1b;--ms-ink:#081c37;--ms-halo:#126aff52}
+:root[data-ms-theme="unicorn"]{--ms-core:#16e9b7;--ms-rail:#f5faff;--ms-edge:#18e5b3;--ms-primary:#078f7c;--ms-primary2:#044b4b;--ms-gold:#e8fdf4;--ms-stat:#eafcf6;--ms-panel:#0c1d20;--ms-panel2:#040d11;--ms-ink:#0a2728;--ms-halo:#1affc54a}
+:root[data-ms-theme="banshee"]{--ms-core:#ffc547;--ms-rail:#f1ad1f;--ms-edge:#d99b27;--ms-primary:#97651b;--ms-primary2:#3e2c10;--ms-gold:#ffd05a;--ms-stat:#ffd05a;--ms-panel:#111015;--ms-panel2:#050609;--ms-ink:#151113;--ms-halo:#ffc83d3d}
+:root[data-ms-theme="sinanju"]{--ms-core:#edc06b;--ms-rail:#e11a42;--ms-edge:#c91f3a;--ms-primary:#b31232;--ms-primary2:#440b1b;--ms-gold:#ffca69;--ms-stat:#ffc261;--ms-panel:#270912;--ms-panel2:#09050a;--ms-ink:#1a0710;--ms-halo:#ff26454a}
+header{border-bottom-color:var(--ms-rail)!important;box-shadow:0 5px 0 #071522,0 12px 22px var(--ms-halo)!important}
+.brand,.command-kicker,.terminal-label,.terminal-note{color:var(--ms-core)!important;text-shadow:0 0 9px var(--ms-halo)!important}
+h1{color:var(--ms-strong)!important;text-shadow:0 0 12px var(--ms-halo)!important}
+.hero,.panel,.stat,.unit-terminal,dialog form{background:linear-gradient(145deg,var(--ms-panel),var(--ms-panel2))!important;border-color:var(--ms-edge)!important;box-shadow:inset 0 0 0 1px #ffffff24,0 0 16px var(--ms-halo)!important}
+.hero::before,.panel::before,.unit-terminal::before,.refresh-button::before,.primary::before,.secondary::before,.danger::before,.tabs>button::before,dialog form::before{border-color:var(--ms-rail)!important;opacity:.65}
+.hero::after,.panel::after,.unit-terminal::after{background:linear-gradient(90deg,var(--ms-rail) 0 17%,#fff 17% 22%,var(--ms-core) 22% 44%,transparent 80%)!important}
+.hero{border-left-color:var(--ms-rail)!important}
+.stat{border-color:var(--ms-stat)!important}
+.stat strong,.stat:after{color:var(--ms-stat)!important;text-shadow:0 0 8px var(--ms-halo)!important}
+.section h2,.barline h2{border-left-color:var(--ms-rail)!important}
+.command-metrics span{background:var(--ms-ink)!important;border-color:var(--ms-rail)!important}
+.unit-terminal{border-color:var(--ms-edge)!important;border-left-color:var(--ms-rail)!important}
+.unit-led{background:linear-gradient(90deg,var(--ms-primary2),var(--ms-core))!important;border-color:var(--ms-core)!important;box-shadow:0 0 12px var(--ms-halo)!important}
+.primary{background:linear-gradient(180deg,var(--ms-primary),var(--ms-primary2))!important;border-color:var(--ms-core)!important}
+.secondary,.refresh-button{background:var(--ms-ink)!important;border-color:var(--ms-rail)!important}
+.chip,.terminal-label,.online-pill{border-color:var(--ms-rail)!important;background:var(--ms-ink)!important}
+.tabs{border-top-color:var(--ms-rail)!important;box-shadow:0 -7px 22px var(--ms-halo)!important}
+.tabs>button{border-color:var(--ms-edge)!important;background:var(--ms-ink)!important;box-shadow:inset 0 0 0 1px var(--ms-primary),0 0 10px var(--ms-halo)!important}
+.tabs>button.active{border-color:var(--ms-core)!important;background:var(--ms-primary2)!important;box-shadow:0 0 14px var(--ms-halo)!important}
+.tabs>.home-tab{border-color:var(--ms-gold)!important;background:var(--ms-panel)!important}
+.tabs>.home-tab b{color:var(--ms-gold)!important}
+.tabs>.home-tab.active{box-shadow:0 0 15px var(--ms-halo)!important}
+input,select,textarea{background:var(--ms-ink)!important;border-color:var(--ms-edge)!important}
+input:focus,select:focus,textarea:focus{border-color:var(--ms-core)!important;outline-color:var(--ms-halo)!important}
+.quote-row{border-color:var(--ms-rail)!important;background:var(--ms-ink)!important}
+.hint{border-left-color:var(--ms-rail)!important}
+/* Keep repairs conspicuous regardless of theme */
+.kit-card.status-repair{border-color:#ff2448!important;border-left:5px solid #ff2848!important}
+.kit-card.status-repair .unit-terminal{border-color:#ff6c83!important;border-left-color:#ff254c!important}
+.kit-card.status-repair .unit-led{background:linear-gradient(90deg,#781126,#ff294a)!important;border-color:#ff8496!important;box-shadow:0 0 9px #ff2848a6!important}
+.kit-card.status-repair .unit-terminal:after{background:linear-gradient(90deg,#ff2a4c 0 18%,#fff 18% 21%,transparent 61%)!important}
+.repair-banner{background:#8a0924!important;border-color:#ff415d!important}
+.repair-details{background:#280713ee!important;border-color:#ff5774!important}
+.theme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.theme-choice{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;padding:13px 10px;background:#07101c;border:2px solid #526575;border-radius:4px;color:#fff;text-align:left;transition:border-color .15s,background .15s}
+.theme-choice strong{font-size:14px;line-height:1.25}
+.theme-choice small{font-size:10px;letter-spacing:.03em;color:#d0e4f8}
+.theme-choice[aria-pressed="true"]{border-color:var(--ms-core);background:var(--ms-primary2);box-shadow:0 0 0 1px var(--ms-rail),0 0 14px var(--ms-halo)}
+.theme-swatches{display:flex;width:100%;gap:4px;margin-bottom:6px}
+.theme-swatches i{display:block;height:9px;flex:1;border:1px solid #ffffff65}
+@media(max-width:360px){.theme-choice{padding:10px 7px}.theme-choice strong{font-size:12px}}
 </style></head><body>
-<header><div class="header-wrap"><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v1.5</div><h1>GUNPLA HANGAR</h1><p class="sub">TACTICAL INVENTORY HUD <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>SYNC</span></button></div></div></header>
+<header><div class="header-wrap"><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v1.6</div><h1>GUNPLA HANGAR</h1><p class="sub">TACTICAL INVENTORY HUD <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>SYNC</span></button></div></div></header>
 <main class="shell">
 <section id="page-home"><div class="hero"><div class="command-kicker">TACTICAL HUD // INVENTORY STATUS</div><div class="command-metrics"><span id="commandDate">----</span><span id="commandUnits">00 UNITS</span><span id="commandRepair">00 REPAIR</span></div><strong id="randomQuote" aria-live="polite">HANGAR SYSTEM ONLINE</strong><p class="small">データはこのSafari内に保存。復旧用にJSONバックアップも可能。</p><div class="actions" style="margin-top:12px"><button class="primary" id="quickAdd">＋ キット登録</button><button class="secondary" id="quickSupply">＋ 工具・塗料</button></div></div><div class="stats"><div class="stat"><strong id="countAll">0</strong><span>総キット数</span></div><div class="stat"><strong id="countBacklog">0</strong><span>積みプラ</span></div><div class="stat"><strong id="countDone">0</strong><span>完成</span></div></div><div class="section"><div class="barline"><h2>注視中のMS</h2><span class="small">製作中・修理中を自動抽出</span></div><div id="working"></div></div></section>
 <section class="hide" id="page-kits"><div class="barline"><h2>格納MS / UNIT DATABASE</h2><button class="primary tiny" id="addKit">＋ 追加</button></div><div class="searchrow"><input id="filterText" placeholder="キット名・メモで検索"/><select id="filterStatus" style="width:136px"><option value="">すべて</option><option>積みプラ</option><option>製作中</option><option>完成</option><option>修理中</option><option>保留</option><option>欲しい</option></select></div><div id="kitList"></div></section>
 <section class="hide" id="page-parts"><div class="barline"><h2>パーツ管理 / REQUISITION</h2><button class="primary tiny" id="addPart">＋ パーツ登録</button></div><p class="small">欲しい・注文中・入手済みのパーツを機体別に管理。</p><div class="panel"><label>MSで絞り込み<select id="partKitFilter"><option value="">すべてのMS</option></select></label><label>パーツ名・番号で検索<input id="partSearch" placeholder="パーツ番号・名前"/></label></div><div id="partsList"></div></section><section class="hide" id="page-supplies"><div class="barline"><h2>工具管理 / EQUIPMENT LOCKER</h2><button class="primary tiny" id="addSupply">＋ 追加</button></div><div id="supplyList"></div></section>
 <section class="hide" id="page-records"><button class="secondary tiny" id="backFromRecords" type="button">← 設定に戻る</button><div class="barline"><h2>製作ログ</h2><button class="primary tiny" id="addRecord">＋ 記録する</button></div><p class="small">製作日記・破損パーツ・写真をキットごとに管理します。</p><div class="record-tabs"><button class="sel" data-record-filter="all" type="button">すべて</button><button data-record-filter="damage" type="button">破損・修理</button><button data-record-filter="journal" type="button">日記・写真</button></div><div id="recordList"></div></section>
-<section class="hide" id="page-data"><h2>設定・バックアップ / SYSTEM</h2><div class="panel quote-settings"><h2>表示セリフ設定</h2><p class="small">ホームの大きなメッセージに表示するセリフを登録。最大30件、各50文字。SYNCで更新するたびにランダム表示します。</p><div id="quoteInputs"></div><p class="small" id="quoteCount" aria-live="polite"></p><div class="actions" style="margin-top:12px"><button class="secondary" id="addQuote" type="button">＋ セリフを追加</button><button class="primary" id="saveQuotes" type="button">セリフを保存</button><button class="secondary" id="shuffleQuote" type="button">表示を抽選</button></div><p id="quoteSaveStatus" class="small" role="status"></p></div><div class="panel"><h2>製作・整備の記録</h2><p class="small">以前の製作記録や修理ログは引き続き利用できます。</p><button class="secondary" id="openRecords" type="button">製作記録を開く</button></div><p class="hint">旧バージョンの登録キット・工具・パーツ・記録はそのまま引き継ぎます。JSONバックアップにも含まれます。</p><div class="panel"><h2>データ保護</h2><p id="storageDiagnostics" class="hint" role="status">保存状況を確認しています…</p><p class="small">Safariの履歴やWebサイトデータを削除すると記録が消える場合があります。v1.5では再表示・Safari復帰時に自動同期を試みますが、確実性のためJSONを「ファイル」アプリに定期保存してください。</p><div class="actions"><button class="primary" id="exportBtn">バックアップ保存</button><button class="secondary" id="importBtn">バックアップ復元</button><input accept="application/json,.json" class="hiddenInput" id="importFile" type="file"/></div></div><div class="panel"><h2>保存とプライバシー</h2><p class="small">ログイン・サーバー送信・追加アプリ不要。端末・ブラウザごとにデータは別管理です。ブラウザのストレージ容量・保持期間に制限があります。</p></div><div class="panel"><button class="danger" id="resetBtn">すべてのデータを削除</button></div><p class="footer-note">GUNPLA HANGAR v1.5 • COCKPIT CONTROL EDITION • Safari復帰時の自動同期を追加</p></section>
+<section class="hide" id="page-data"><h2>設定・バックアップ / SYSTEM</h2><div class="panel theme-settings"><h2>機体テーマ設定 / MS COLOR SYSTEM</h2><p class="small">機体のカラーをHUD全体に適用します。変更はこのSafariに自動保存されます。</p><div class="theme-grid" id="themeGrid" role="group" aria-label="機体テーマ設定"><button type="button" data-theme="strike" class="theme-choice"><span class="theme-swatches"><i style="background:#165CFF"></i><i style="background:#F0203E"></i><i style="background:#FFFFFF"></i><i style="background:#FFD044"></i></span><strong>ストライクフリーダム</strong><small>BLUE / RED / WHITE / GOLD</small></button><button type="button" data-theme="unicorn" class="theme-choice"><span class="theme-swatches"><i style="background:#FFFFFF"></i><i style="background:#18EFBB"></i></span><strong>ユニコーンガンダム</strong><small>WHITE / EMERALD GREEN</small></button><button type="button" data-theme="banshee" class="theme-choice"><span class="theme-swatches"><i style="background:#040508"></i><i style="background:#F4BB3E"></i></span><strong>バンシィ・ノルン</strong><small>BLACK / GOLD</small></button><button type="button" data-theme="sinanju" class="theme-choice"><span class="theme-swatches"><i style="background:#A00B28"></i><i style="background:#08090C"></i><i style="background:#E7B64E"></i></span><strong>シナンジュ</strong><small>DEEP RED / BLACK / GOLD</small></button></div><p class="small" id="themeStatus" role="status">選択中：ストライクフリーダム</p></div><div class="panel quote-settings"><h2>表示セリフ設定</h2><p class="small">ホームの大きなメッセージに表示するセリフを登録。最大30件、各50文字。SYNCで更新するたびにランダム表示します。</p><div id="quoteInputs"></div><p class="small" id="quoteCount" aria-live="polite"></p><div class="actions" style="margin-top:12px"><button class="secondary" id="addQuote" type="button">＋ セリフを追加</button><button class="primary" id="saveQuotes" type="button">セリフを保存</button><button class="secondary" id="shuffleQuote" type="button">表示を抽選</button></div><p id="quoteSaveStatus" class="small" role="status"></p></div><div class="panel"><h2>製作・整備の記録</h2><p class="small">以前の製作記録や修理ログは引き続き利用できます。</p><button class="secondary" id="openRecords" type="button">製作記録を開く</button></div><p class="hint">旧バージョンの登録キット・工具・パーツ・記録はそのまま引き継ぎます。JSONバックアップにも含まれます。</p><div class="panel"><h2>データ保護</h2><p id="storageDiagnostics" class="hint" role="status">保存状況を確認しています…</p><p class="small">Safariの履歴やWebサイトデータを削除すると記録が消える場合があります。v1.6では再表示・Safari復帰時に自動同期を試みますが、確実性のためJSONを「ファイル」アプリに定期保存してください。</p><div class="actions"><button class="primary" id="exportBtn">バックアップ保存</button><button class="secondary" id="importBtn">バックアップ復元</button><input accept="application/json,.json" class="hiddenInput" id="importFile" type="file"/></div></div><div class="panel"><h2>保存とプライバシー</h2><p class="small">ログイン・サーバー送信・追加アプリ不要。端末・ブラウザごとにデータは別管理です。ブラウザのストレージ容量・保持期間に制限があります。</p></div><div class="panel"><button class="danger" id="resetBtn">すべてのデータを削除</button></div><p class="footer-note">GUNPLA HANGAR v1.6 • COCKPIT CONTROL EDITION • Safari復帰時の自動同期を追加</p></section>
 </main>
 <nav class="tabs" aria-label="メインメニュー"><button data-page="supplies"><b>⚒</b>工具</button><button data-page="parts"><b>◇</b>パーツ</button><button class="active home-tab" data-page="home"><b>⌂</b>ホーム</button><button data-page="kits"><b>▣</b>格納MS</button><button data-page="data"><b>⚙</b>設定</button></nav>
 <dialog id="kitDialog"><div class="dialoghead"><h2 id="kitDialogTitle">キット登録</h2><button class="x" data-close="kitDialog" type="button">×</button></div><form id="kitForm"><input name="id" type="hidden"/><label>キット名（必須）<input maxlength="120" name="name" placeholder="例：MGEX ストライクフリーダム" required=""/></label><div class="two"><label>グレード<select name="grade"><option>HG</option><option>RG</option><option>MG</option><option>MGEX</option><option>PG</option><option>SD</option><option>その他</option></select></label><label>状態<select name="status"><option>積みプラ</option><option>製作中</option><option>完成</option><option>修理中</option><option>保留</option><option>欲しい</option></select></label></div><label>購入金額（任意・記録用）<input min="0" name="price" placeholder="未入力でもOK" step="1" type="number"/></label><label>購入日<input name="date" type="date"/></label><label>メモ<textarea maxlength="2000" name="note" placeholder="製作状況・塗装予定など"></textarea></label><div class="form-optional"><div class="terminal-note">REPAIR RECORD / 任意入力</div><label>破損箇所（任意）<input maxlength="160" name="damageLocation" placeholder="例：右ドラグーン接続部"/></label><label>パーツ番号（任意）<input maxlength="120" name="partNumber" placeholder="例：G45"/></label><p class="hint">修理中のMSカードに表示されます。空欄のまま登録可能です。</p></div><button class="primary full" type="submit">保存する</button><button class="danger full hide" id="deleteKit" type="button">このキットを削除</button></form></dialog>
@@ -329,6 +377,21 @@ $('#refreshView').addEventListener('click',()=>{
 window.addEventListener('pageshow',()=>{syncFromStorage({confirmIfLess:false,keepPosition:false});});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncFromStorage({confirmIfLess:false,keepPosition:false});});
 inspectStorage();
+
+
+// Theme preference is independent of the inventory and quote data stores.
+const MS_THEME_KEY='gunpla-hangar-ms-theme-v1';
+const MS_THEME_NAMES={strike:'ストライクフリーダム',unicorn:'ユニコーンガンダム',banshee:'バンシィ・ノルン',sinanju:'シナンジュ'};
+function setMsTheme(theme, persist=true){
+ const id=Object.prototype.hasOwnProperty.call(MS_THEME_NAMES,theme)?theme:'strike';
+ document.documentElement.dataset.msTheme=id;
+ document.querySelectorAll('[data-theme]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.theme===id)));
+ const note=document.getElementById('themeStatus');if(note)note.textContent='選択中：'+MS_THEME_NAMES[id];
+ if(persist){try{localStorage.setItem(MS_THEME_KEY,id)}catch(err){if(note)note.textContent+='（設定を保存できませんでした）'}}
+}
+let savedMsTheme='strike';try{savedMsTheme=localStorage.getItem(MS_THEME_KEY)||'strike'}catch(_){}
+setMsTheme(savedMsTheme,false);
+document.querySelectorAll('[data-theme]').forEach(btn=>btn.addEventListener('click',()=>setMsTheme(btn.dataset.theme)));
 
 // Private text-only home message settings; separate storage key preserves legacy inventory data.
 const QUOTE_KEY='gunpla-hangar-display-quotes-v1';
