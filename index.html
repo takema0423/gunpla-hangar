@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0a1120" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><title>GUNPLA HANGAR v1.9</title><style>@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0a1120" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><title>GUNPLA HANGAR v2.1</title><style>@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
 :root{
   color-scheme:dark;
   --bg:#04070d;
@@ -438,20 +438,188 @@ html[data-ms-theme="sinanju"] body{--hud-frame:url("data:image/svg+xml;base64,PH
 #page-home .section .barline{align-items:center!important;gap:9px!important}
 #page-home .section .barline h2{font-size:clamp(16px,4.7vw,29px)!important;white-space:nowrap}
 #page-home .section .barline .small{font-family:'Rajdhani',sans-serif;letter-spacing:.045em;font-size:clamp(8px,2.3vw,12px)!important;text-align:right;line-height:1.15}
+
+/* SHARE EDITION / keep interactive buttons above HUD art */
+.share-panel{border-color:var(--line-strong)}
+.welcome-dialog{max-width:550px;max-height:min(88vh,750px);overflow:auto;color:var(--text);background:var(--bg2);border:1px solid var(--cyan);border-radius:9px;padding:0;box-shadow:0 0 44px rgba(0,160,255,.24)}
+.welcome-dialog .dialoghead{position:sticky;top:0;z-index:2;background:var(--bg2)!important;border-bottom:1px solid var(--line)!important;padding:14px!important;border-radius:0!important}
+.welcome-dialog .dialoghead h2{font-size:14px}
+.welcome-dialog .welcome-content{padding:16px}
+.welcome-lead{font-family:'Orbitron',sans-serif;color:var(--cyan);letter-spacing:.13em;font-size:12px}
+.welcome-steps{list-style:none;padding:0;margin:18px 0;display:grid;gap:10px;counter-reset:step}
+.welcome-steps li{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-left:3px solid var(--cyan);background:rgba(10,28,52,.8)}
+.welcome-steps li strong{color:#f4f9ff}
+.welcome-steps li span{font-size:13px;color:#bfcee2}
+.welcome-warning{padding:11px 12px;border:1px solid var(--gold);background:rgba(44,35,13,.36);border-radius:5px}
+.welcome-warning strong{color:var(--gold)}
+.welcome-warning p{font-size:13px;margin-top:5px}
+.welcome-dialog .primary{position:relative;z-index:3}
+
+/* v2.1 / SIMPLE FUTURE MODE - separate visual system; cockpit remains untouched */
+.ui-mode-settings{position:relative}
+.ui-mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.ui-mode-choice{position:relative;display:flex;flex-direction:column;gap:8px;text-align:left;min-width:0;padding:13px;border:2px solid #3c556d;border-radius:8px;background:#081625;color:#f1f8ff;min-height:142px;overflow:hidden;z-index:2}
+.ui-mode-choice[aria-pressed="true"]{border-color:var(--ms-core);box-shadow:0 0 0 1px var(--ms-rail)}
+.ui-mode-choice strong{font-size:15px;letter-spacing:.04em;line-height:1.25}
+.ui-mode-choice small{font-size:11px;color:#b8cde0;line-height:1.5}
+.ui-mode-mini{display:flex;flex-direction:column;gap:5px;height:42px;border-radius:4px;border:1px solid #5e8ea8;background:#06101e;padding:8px}
+.ui-mode-mini i{display:block;height:5px;border:1px solid #57d9f7;background:#09243d}
+.ui-mode-mini i:nth-child(2){width:72%}
+.ui-mode-mini.simple{border-color:#38465a;background:#121b29;border-radius:9px}
+.ui-mode-mini.simple i{height:7px;border:0;border-radius:4px;background:#394c66}
+.ui-mode-mini.simple i:first-child{background:var(--ms-core)}
+html[data-ui-mode="simple"]{
+ --simple-base:#0a101a;--simple-surface:#131e2e;--simple-raised:#19273a;
+ --simple-line:#2c4058;--simple-muted:#a4b6c9;--simple-text:#f1f6fc;
+ --simple-accent:var(--ms-core);--simple-action:var(--ms-primary);
+}
+html[data-ui-mode="simple"] body{
+ background:#0a111c!important;
+ background-image:radial-gradient(ellipse 80% 45% at 50% -20%,#1a3550 0%,transparent 100%)!important;
+ color:var(--simple-text)!important;
+ font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif!important;
+}
+html[data-ui-mode="simple"] body::before,
+html[data-ui-mode="simple"] body::after{display:none!important;content:none!important}
+html[data-ui-mode="simple"] header{
+ background:#101a28!important;border-bottom:1px solid #2a4158!important;
+ backdrop-filter:blur(16px)!important;box-shadow:none!important}
+html[data-ui-mode="simple"] header::after,
+html[data-ui-mode="simple"] header::before{display:none!important;content:none!important}
+html[data-ui-mode="simple"] header .header-wrap{padding:calc(15px + env(safe-area-inset-top)) 18px 14px!important}
+html[data-ui-mode="simple"] h1{font-size:22px!important;letter-spacing:.06em!important;font-weight:750!important;text-shadow:none!important;font-family:'Rajdhani',sans-serif!important}
+html[data-ui-mode="simple"] .brand{font-family:'Rajdhani',sans-serif!important;letter-spacing:.16em!important;color:var(--simple-accent)!important;font-size:11px!important}
+html[data-ui-mode="simple"] .online-pill{background:#1a2939!important;border:1px solid #30465f!important;color:#d1e2f1!important;box-shadow:none!important}
+html[data-ui-mode="simple"] .shell{max-width:800px!important;padding:18px 18px calc(112px + env(safe-area-inset-bottom))!important}
+html[data-ui-mode="simple"] .hero,
+html[data-ui-mode="simple"] .panel,
+html[data-ui-mode="simple"] .kit-card,
+html[data-ui-mode="simple"] .unit-terminal,
+html[data-ui-mode="simple"] .stat{
+ background:var(--simple-surface)!important;
+ background-image:none!important;
+ border:1px solid var(--simple-line)!important;
+ border-radius:14px!important;
+ box-shadow:none!important;
+ filter:none!important;
+ clip-path:none!important;
+ backdrop-filter:none!important;
+}
+html[data-ui-mode="simple"] .hero{padding:20px 17px!important;margin:0 0 14px!important}
+html[data-ui-mode="simple"] .panel{padding:17px!important;margin:10px 0!important}
+html[data-ui-mode="simple"] .unit-terminal{padding:12px 14px!important;margin-bottom:6px!important;background:#101b29!important;border-color:#273c50!important}
+html[data-ui-mode="simple"] .kit-card{padding:12px!important}
+html[data-ui-mode="simple"] .hero::before,html[data-ui-mode="simple"] .hero::after,
+html[data-ui-mode="simple"] .panel::before,html[data-ui-mode="simple"] .panel::after,
+html[data-ui-mode="simple"] .stat::before,html[data-ui-mode="simple"] .stat::after,
+html[data-ui-mode="simple"] .unit-terminal::before,html[data-ui-mode="simple"] .unit-terminal::after,
+html[data-ui-mode="simple"] .kit-card::before,html[data-ui-mode="simple"] .kit-card::after,
+html[data-ui-mode="simple"] .hud-frame,html[data-ui-mode="simple"] .hud-decoration,
+html[data-ui-mode="simple"] .hud-corners,html[data-ui-mode="simple"] .hud-wires{
+ display:none!important;content:none!important;background:none!important;
+ background-image:none!important;box-shadow:none!important;opacity:0!important}
+html[data-ui-mode="simple"] .command-kicker,
+html[data-ui-mode="simple"] .terminal-label,
+html[data-ui-mode="simple"] .terminal-note{font-family:'Rajdhani',sans-serif!important;color:var(--simple-accent)!important;font-weight:700!important;letter-spacing:.12em!important}
+html[data-ui-mode="simple"] .command-metrics{gap:7px!important;margin:10px 0 12px!important}
+html[data-ui-mode="simple"] .command-metrics span,
+html[data-ui-mode="simple"] .chip{
+ background:#1b2a3b!important;color:#cfe0ef!important;border:1px solid #344960!important;
+ box-shadow:none!important;border-radius:7px!important;padding:5px 9px!important}
+html[data-ui-mode="simple"] .hero strong{
+ font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif!important;
+ font-size:clamp(17px,4.5vw,23px)!important;line-height:1.45!important;
+ color:#f3f8ff!important;text-shadow:none!important;letter-spacing:.025em!important;
+ min-height:0!important}
+html[data-ui-mode="simple"] .stats{gap:9px!important;margin:12px 0 22px!important}
+html[data-ui-mode="simple"] .stat{min-width:0;padding:15px 10px!important;text-align:left}
+html[data-ui-mode="simple"] .stat strong{font-family:'Rajdhani',sans-serif!important;font-size:31px!important;font-weight:700!important;color:var(--simple-text)!important;margin-bottom:3px!important;text-shadow:none!important}
+html[data-ui-mode="simple"] .stat span{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif!important;letter-spacing:0!important;font-size:11px!important;color:var(--simple-muted)!important}
+html[data-ui-mode="simple"] .section{margin-top:20px!important}
+html[data-ui-mode="simple"] h2{font-family:'Rajdhani',sans-serif!important;font-size:20px!important;font-weight:700!important;letter-spacing:.045em!important;color:var(--simple-text)!important;text-shadow:none!important}
+html[data-ui-mode="simple"] #page-home .section .barline h2{font-size:22px!important}
+html[data-ui-mode="simple"] #page-home .section .barline .small{font-family:'Rajdhani',sans-serif!important;letter-spacing:.04em!important;color:var(--simple-muted)!important}
+html[data-ui-mode="simple"] .ms-name,
+html[data-ui-mode="simple"] #page-home .unit-terminal .ms-name{font-family:'Rajdhani',sans-serif!important;font-weight:700!important;font-size:clamp(22px,5.5vw,31px)!important;letter-spacing:.02em!important;color:#f2f7ff!important;text-shadow:none!important}
+html[data-ui-mode="simple"] .ms-name-original{color:#a7bdce!important;opacity:1!important;font-size:12px!important}
+html[data-ui-mode="simple"] .unit-led{height:8px!important;width:42px!important;top:15px!important;right:15px!important;box-shadow:none!important;background:var(--simple-accent)!important;border:0!important;opacity:.7!important}
+html[data-ui-mode="simple"] .repair-banner{border-radius:8px!important;background:#39212a!important;color:#ffc0c7!important;border:1px solid #8d4352!important;font-family:'Rajdhani',sans-serif!important;letter-spacing:.08em!important;padding:8px 11px!important;box-shadow:none!important}
+html[data-ui-mode="simple"] .repair-details{background:#281d27!important;border-color:#603340!important;border-radius:8px!important;box-shadow:none!important}
+html[data-ui-mode="simple"] .kit-card.status-repair{border-left:3px solid #f4687e!important}
+html[data-ui-mode="simple"] .kit-card.status-building{border-left:3px solid #5eabff!important}
+html[data-ui-mode="simple"] .kit-card.status-complete{border-left:3px solid #64ccab!important}
+html[data-ui-mode="simple"] .kit-card.status-hold{border-left:3px solid #e6b958!important}
+html[data-ui-mode="simple"] .primary,
+html[data-ui-mode="simple"] .secondary,
+html[data-ui-mode="simple"] .danger,
+html[data-ui-mode="simple"] .refresh-button,
+html[data-ui-mode="simple"] .tiny,
+html[data-ui-mode="simple"] .x,
+html[data-ui-mode="simple"] .record-tabs button{
+ clip-path:none!important;border-radius:9px!important;
+ background:#1b293b!important;border:1px solid #3a5169!important;
+ color:#e8f2fc!important;box-shadow:none!important;text-shadow:none!important;
+ font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif!important;
+ font-size:13px!important;letter-spacing:0!important}
+html[data-ui-mode="simple"] .primary{background:var(--simple-action)!important;color:#fff!important;border-color:var(--simple-action)!important}
+html[data-ui-mode="simple"] .danger{background:#542632!important;border-color:#a94b61!important;color:#fff!important}
+html[data-ui-mode="simple"] .primary::before,html[data-ui-mode="simple"] .secondary::before,
+html[data-ui-mode="simple"] .danger::before,html[data-ui-mode="simple"] .refresh-button::before,
+html[data-ui-mode="simple"] .tiny::before{display:none!important;content:none!important}
+html[data-ui-mode="simple"] input,html[data-ui-mode="simple"] textarea,html[data-ui-mode="simple"] select{
+ background:#0c1725!important;border:1px solid #344c63!important;border-radius:9px!important;
+ color:#eef5ff!important;box-shadow:none!important}
+html[data-ui-mode="simple"] .tabs{
+ background:#0e1723!important;border-top:1px solid #2c4357!important;
+ backdrop-filter:blur(18px)!important;box-shadow:none!important;
+ gap:4px!important;padding:10px 8px calc(8px + env(safe-area-inset-bottom))!important;
+ align-items:flex-end!important}
+html[data-ui-mode="simple"] .tabs>button{
+ width:70px!important;min-height:55px!important;border:0!important;border-radius:9px!important;
+ background:transparent!important;box-shadow:none!important;clip-path:none!important;
+ color:#9db3c8!important;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif!important;
+ font-size:11px!important;gap:3px!important}
+html[data-ui-mode="simple"] .tabs>button.active{
+ background:#1b2d40!important;color:#f2f8ff!important;box-shadow:none!important}
+html[data-ui-mode="simple"] .tabs>button::before,html[data-ui-mode="simple"] .tabs>button::after{display:none!important;content:none!important}
+html[data-ui-mode="simple"] .tabs>.home-tab{width:78px!important;min-height:61px!important;transform:translateY(-4px)!important;border:1px solid #3a5269!important;background:#172438!important}
+html[data-ui-mode="simple"] .tabs>.home-tab b{color:var(--simple-accent)!important}
+html[data-ui-mode="simple"] dialog,html[data-ui-mode="simple"] dialog form,html[data-ui-mode="simple"] dialog>div{
+ border-radius:13px!important;box-shadow:none!important;clip-path:none!important;
+ background:#142033!important;border-color:#334b64!important}
+html[data-ui-mode="simple"] .theme-choice,
+html[data-ui-mode="simple"] .ui-mode-choice{
+ background:#18283a!important;border-radius:10px!important;border:1px solid #334a61!important;box-shadow:none!important;clip-path:none!important}
+html[data-ui-mode="simple"] .theme-choice[aria-pressed="true"],
+html[data-ui-mode="simple"] .ui-mode-choice[aria-pressed="true"]{border:2px solid var(--simple-accent)!important}
+html[data-ui-mode="simple"] .ui-mode-choice::before,
+html[data-ui-mode="simple"] .ui-mode-choice::after{display:none!important;content:none!important}
+@media(max-width:380px){.ui-mode-grid{gap:8px}.ui-mode-choice{padding:10px}.ui-mode-choice strong{font-size:13px}html[data-ui-mode="simple"] .stats{gap:7px!important}html[data-ui-mode="simple"] .stat{padding:12px 8px!important}}
 </style></head><body>
-<header><div class="header-wrap"><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v1.9.2</div><h1>GUNPLA HANGAR</h1><p class="sub">TACTICAL INVENTORY HUD <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>SYNC</span></button></div></div></header>
+<header><div class="header-wrap"><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v2.1</div><h1>GUNPLA HANGAR</h1><p class="sub">TACTICAL INVENTORY HUD <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>SYNC</span></button></div></div></header>
 <main class="shell">
 <section id="page-home"><div class="hero"><div class="command-kicker">TACTICAL HUD // INVENTORY STATUS</div><div class="command-metrics"><span id="commandDate">----</span><span id="commandUnits">00 UNITS</span><span id="commandRepair">00 REPAIR</span></div><strong id="randomQuote" aria-live="polite">HANGAR SYSTEM ONLINE</strong><p class="small">データはこのSafari内に保存。復旧用にJSONバックアップも可能。</p><div class="actions" style="margin-top:12px"><button class="primary" id="quickAdd">＋ キット登録</button><button class="secondary" id="quickSupply">＋ 工具・塗料</button></div></div><div class="stats"><div class="stat"><strong id="countAll">0</strong><span>総キット数</span></div><div class="stat"><strong id="countBacklog">0</strong><span>積みプラ</span></div><div class="stat"><strong id="countDone">0</strong><span>完成</span></div></div><div class="section"><div class="barline"><h2>HANGAR STATUS</h2><span class="small">ACTIVE MAINTENANCE UNITS</span></div><div id="working"></div></div></section>
 <section class="hide" id="page-kits"><div class="barline"><h2>格納MS / UNIT DATABASE</h2><button class="primary tiny" id="addKit">＋ 追加</button></div><div class="searchrow"><input id="filterText" placeholder="キット名・メモで検索"/><select id="filterStatus" style="width:136px"><option value="">すべて</option><option>積みプラ</option><option>製作中</option><option>完成</option><option>修理中</option><option>保留</option><option>欲しい</option></select></div><div id="kitList"></div></section>
 <section class="hide" id="page-parts"><div class="barline"><h2>パーツ管理 / REQUISITION</h2><button class="primary tiny" id="addPart">＋ パーツ登録</button></div><p class="small">欲しい・注文中・入手済みのパーツを機体別に管理。</p><div class="panel"><label>MSで絞り込み<select id="partKitFilter"><option value="">すべてのMS</option></select></label><label>パーツ名・番号で検索<input id="partSearch" placeholder="パーツ番号・名前"/></label></div><div id="partsList"></div></section><section class="hide" id="page-supplies"><div class="barline"><h2>工具管理 / EQUIPMENT LOCKER</h2><button class="primary tiny" id="addSupply">＋ 追加</button></div><div id="supplyList"></div></section>
 <section class="hide" id="page-records"><button class="secondary tiny" id="backFromRecords" type="button">← 設定に戻る</button><div class="barline"><h2>製作ログ</h2><button class="primary tiny" id="addRecord">＋ 記録する</button></div><p class="small">製作日記・破損パーツ・写真をキットごとに管理します。</p><div class="record-tabs"><button class="sel" data-record-filter="all" type="button">すべて</button><button data-record-filter="damage" type="button">破損・修理</button><button data-record-filter="journal" type="button">日記・写真</button></div><div id="recordList"></div></section>
-<section class="hide" id="page-data"><h2>設定・バックアップ / SYSTEM</h2><div class="panel theme-settings"><h2>機体テーマ設定 / MS COLOR SYSTEM</h2><p class="small">機体のカラーをHUD全体に適用します。変更はこのSafariに自動保存されます。</p><div class="theme-grid" id="themeGrid" role="group" aria-label="機体テーマ設定"><button type="button" data-theme="strike" class="theme-choice"><span class="theme-swatches"><i style="background:#165CFF"></i><i style="background:#F0203E"></i><i style="background:#FFFFFF"></i><i style="background:#FFD044"></i></span><strong>ストライクフリーダム</strong><small>BLUE / RED / WHITE / GOLD</small></button><button type="button" data-theme="unicorn" class="theme-choice"><span class="theme-swatches"><i style="background:#FFFFFF"></i><i style="background:#18EFBB"></i></span><strong>ユニコーンガンダム</strong><small>WHITE / EMERALD GREEN</small></button><button type="button" data-theme="banshee" class="theme-choice"><span class="theme-swatches"><i style="background:#040508"></i><i style="background:#F4BB3E"></i></span><strong>バンシィ・ノルン</strong><small>BLACK / GOLD</small></button><button type="button" data-theme="sinanju" class="theme-choice"><span class="theme-swatches"><i style="background:#A00B28"></i><i style="background:#08090C"></i><i style="background:#E7B64E"></i></span><strong>シナンジュ</strong><small>DEEP RED / BLACK / GOLD</small></button></div><p class="small" id="themeStatus" role="status">選択中：ストライクフリーダム</p></div><div class="panel quote-settings"><h2>表示セリフ設定</h2><p class="small">ホームの大きなメッセージに表示するセリフを登録。最大30件、各50文字。SYNCで更新するたびにランダム表示します。</p><div id="quoteInputs"></div><p class="small" id="quoteCount" aria-live="polite"></p><div class="actions" style="margin-top:12px"><button class="secondary" id="addQuote" type="button">＋ セリフを追加</button><button class="primary" id="saveQuotes" type="button">セリフを保存</button><button class="secondary" id="shuffleQuote" type="button">表示を抽選</button></div><p id="quoteSaveStatus" class="small" role="status"></p></div><div class="panel"><h2>製作・整備の記録</h2><p class="small">以前の製作記録や修理ログは引き続き利用できます。</p><button class="secondary" id="openRecords" type="button">製作記録を開く</button></div><p class="hint">旧バージョンの登録キット・工具・パーツ・記録はそのまま引き継ぎます。JSONバックアップにも含まれます。</p><div class="panel"><h2>データ保護</h2><p id="storageDiagnostics" class="hint" role="status">保存状況を確認しています…</p><p class="small">Safariの履歴やWebサイトデータを削除すると記録が消える場合があります。v1.6では再表示・Safari復帰時に自動同期を試みますが、確実性のためJSONを「ファイル」アプリに定期保存してください。</p><div class="actions"><button class="primary" id="exportBtn">バックアップ保存</button><button class="secondary" id="importBtn">バックアップ復元</button><input accept="application/json,.json" class="hiddenInput" id="importFile" type="file"/></div></div><div class="panel"><h2>保存とプライバシー</h2><p class="small">ログイン・サーバー送信・追加アプリ不要。端末・ブラウザごとにデータは別管理です。ブラウザのストレージ容量・保持期間に制限があります。</p></div><div class="panel"><button class="danger" id="resetBtn">すべてのデータを削除</button></div><p class="footer-note">GUNPLA HANGAR v1.9.1 • COCKPIT CONTROL EDITION • Safari復帰時の自動同期を追加</p></section>
+<section class="hide" id="page-data"><h2>設定・バックアップ / SYSTEM</h2>
+<div class="panel share-panel"><div class="terminal-label">DISTRIBUTION / PERSONAL HANGAR</div><h2>友達向けガイド</h2><p class="small">このアプリは利用者ごと・端末ごとに記録を保存します。自分の登録内容は友達には共有されません。</p><button id="openWelcome" type="button" class="secondary">はじめての使い方を見る</button><p class="small" style="margin-top:10px">アプリ版：<strong>v2.1 DUAL UI EDITION</strong> ／ 保存方式：各ブラウザ内（クラウド同期なし）</p></div><div class="panel ui-mode-settings"><div class="terminal-label">DISPLAY SYSTEM / UI MODE</div><h2>画面デザイン切替</h2><p class="small">これまでの精密HUDと、見やすさ重視のシンプル版をいつでも切り替えられます。MSの機体カラーはどちらにも適用されます。</p><div class="ui-mode-grid" id="uiModeGrid" role="group" aria-label="画面デザイン切替"><button type="button" class="ui-mode-choice" data-ui-choice="cockpit" aria-pressed="true"><span class="ui-mode-mini" aria-hidden="true"><i></i><i></i></span><strong>COCKPIT HUD</strong><small>現在の精密・高彩度なコックピットUI</small></button><button type="button" class="ui-mode-choice" data-ui-choice="simple" aria-pressed="false"><span class="ui-mode-mini simple" aria-hidden="true"><i></i><i></i></span><strong>SIMPLE FUTURE</strong><small>装飾を抑えた、実用的な近未来UI</small></button></div><p class="small" id="uiModeStatus" role="status">選択中：COCKPIT HUD</p></div><div class="panel theme-settings"><h2>機体テーマ設定 / MS COLOR SYSTEM</h2><p class="small">機体のカラーをHUD全体に適用します。変更はこのSafariに自動保存されます。</p><div class="theme-grid" id="themeGrid" role="group" aria-label="機体テーマ設定"><button type="button" data-theme="strike" class="theme-choice"><span class="theme-swatches"><i style="background:#165CFF"></i><i style="background:#F0203E"></i><i style="background:#FFFFFF"></i><i style="background:#FFD044"></i></span><strong>ストライクフリーダム</strong><small>BLUE / RED / WHITE / GOLD</small></button><button type="button" data-theme="unicorn" class="theme-choice"><span class="theme-swatches"><i style="background:#FFFFFF"></i><i style="background:#18EFBB"></i></span><strong>ユニコーンガンダム</strong><small>WHITE / EMERALD GREEN</small></button><button type="button" data-theme="banshee" class="theme-choice"><span class="theme-swatches"><i style="background:#040508"></i><i style="background:#F4BB3E"></i></span><strong>バンシィ・ノルン</strong><small>BLACK / GOLD</small></button><button type="button" data-theme="sinanju" class="theme-choice"><span class="theme-swatches"><i style="background:#A00B28"></i><i style="background:#08090C"></i><i style="background:#E7B64E"></i></span><strong>シナンジュ</strong><small>DEEP RED / BLACK / GOLD</small></button></div><p class="small" id="themeStatus" role="status">選択中：ストライクフリーダム</p></div><div class="panel quote-settings"><h2>表示セリフ設定</h2><p class="small">ホームの大きなメッセージに表示するセリフを登録。最大30件、各50文字。SYNCで更新するたびにランダム表示します。</p><div id="quoteInputs"></div><p class="small" id="quoteCount" aria-live="polite"></p><div class="actions" style="margin-top:12px"><button class="secondary" id="addQuote" type="button">＋ セリフを追加</button><button class="primary" id="saveQuotes" type="button">セリフを保存</button><button class="secondary" id="shuffleQuote" type="button">表示を抽選</button></div><p id="quoteSaveStatus" class="small" role="status"></p></div><div class="panel"><h2>製作・整備の記録</h2><p class="small">以前の製作記録や修理ログは引き続き利用できます。</p><button class="secondary" id="openRecords" type="button">製作記録を開く</button></div><p class="hint">旧バージョンの登録キット・工具・パーツ・記録はそのまま引き継ぎます。JSONバックアップにも含まれます。</p><div class="panel"><h2>データ保護</h2><p id="storageDiagnostics" class="hint" role="status">保存状況を確認しています…</p><p class="small">Safariの履歴やWebサイトデータを削除すると記録が消える場合があります。v1.6では再表示・Safari復帰時に自動同期を試みますが、確実性のためJSONを「ファイル」アプリに定期保存してください。</p><div class="actions"><button class="primary" id="exportBtn">バックアップ保存</button><button class="secondary" id="importBtn">バックアップ復元</button><input accept="application/json,.json" class="hiddenInput" id="importFile" type="file"/></div></div><div class="panel"><h2>保存とプライバシー</h2><p class="small">ログイン・サーバー送信・追加アプリ不要。端末・ブラウザごとにデータは別管理です。ブラウザのストレージ容量・保持期間に制限があります。</p></div><div class="panel"><button class="danger" id="resetBtn">すべてのデータを削除</button></div><p class="footer-note">GUNPLA HANGAR v2.1 • DUAL UI EDITION • 各端末で個別管理</p></section>
 </main>
 <nav class="tabs" aria-label="メインメニュー"><button data-page="supplies"><b>⚒</b>工具</button><button data-page="parts"><b>◇</b>パーツ</button><button class="active home-tab" data-page="home"><b>⌂</b>ホーム</button><button data-page="kits"><b>▣</b>格納MS</button><button data-page="data"><b>⚙</b>設定</button></nav>
 <dialog id="kitDialog"><div class="dialoghead"><h2 id="kitDialogTitle">キット登録</h2><button class="x" data-close="kitDialog" type="button">×</button></div><form id="kitForm"><input name="id" type="hidden"/><label>キット名（必須）<input maxlength="120" name="name" placeholder="例：MGEX ストライクフリーダム" required=""/></label><div class="two"><label>グレード<select name="grade"><option>HG</option><option>RG</option><option>MG</option><option>MGEX</option><option>PG</option><option>SD</option><option>その他</option></select></label><label>状態<select name="status"><option>積みプラ</option><option>製作中</option><option>完成</option><option>修理中</option><option>保留</option><option>欲しい</option></select></label></div><label>英語表示名（任意）<input maxlength="120" name="englishName" placeholder="例：STRIKE FREEDOM（空欄なら自動変換）" autocapitalize="characters"/></label><p class="hint">日本語名はそのまま保存。対応する機体は自動で英語表示し、未対応の場合はここで指定できます。</p><label>購入金額（任意・記録用）<input min="0" name="price" placeholder="未入力でもOK" step="1" type="number"/></label><label>購入日<input name="date" type="date"/></label><label>メモ<textarea maxlength="2000" name="note" placeholder="製作状況・塗装予定など"></textarea></label><div class="form-optional"><div class="terminal-note">REPAIR RECORD / 任意入力</div><label>破損箇所（任意）<input maxlength="160" name="damageLocation" placeholder="例：右ドラグーン接続部"/></label><label>パーツ番号（任意）<input maxlength="120" name="partNumber" placeholder="例：G45"/></label><p class="hint">修理中のMSカードに表示されます。空欄のまま登録可能です。</p></div><button class="primary full" type="submit">保存する</button><button class="danger full hide" id="deleteKit" type="button">このキットを削除</button></form></dialog>
 <dialog id="supplyDialog"><div class="dialoghead"><h2 id="supplyDialogTitle">工具・塗料登録</h2><button class="x" data-close="supplyDialog" type="button">×</button></div><form id="supplyForm"><input name="id" type="hidden"/><label>名前（必須）<input maxlength="120" name="name" placeholder="例：ガンダムマーカー" required=""/></label><div class="two"><label>種類<select name="kind"><option>塗料</option><option>工具</option><option>デカール</option><option>消耗品</option><option>その他</option></select></label><label>保有状況<select name="owned"><option value="yes">持っている</option><option value="no">購入予定</option></select></label></div><label>購入金額（円）<input min="0" name="price" placeholder="任意" step="1" type="number"/></label><label>購入日<input name="date" type="date"/></label><label>メモ<textarea maxlength="2000" name="note"></textarea></label><button class="primary full" type="submit">保存する</button><button class="danger full hide" id="deleteSupply" type="button">この品目を削除</button></form></dialog>
 <dialog id="recordDialog"><div class="dialoghead"><h2 id="recordDialogTitle">製作記録を追加</h2><button class="x" data-close="recordDialog" type="button">×</button></div><form id="recordForm"><input name="id" type="hidden"/><label>記録の種類<select id="recordKind" name="kind"><option value="journal">製作日記</option><option value="damage">破損・修理</option><option value="photo">写真記録</option></select></label><label>対象キット<select id="recordKit" name="kitId"></select></label><label>記録日<input name="date" required="" type="date"/></label><label>タイトル<input maxlength="100" name="title" placeholder="例：ドラグーン接続パーツの破損" required=""/></label><div id="damageFields"><label>パーツ番号・箇所<input maxlength="100" name="part" placeholder="例：G45／右ドラグーン接続部"/></label><label>対応状況<select name="repairStatus"><option>破損確認</option><option>交換品手配中</option><option>部品到着</option><option>修理作業中</option><option>修理完了</option></select></label><label>修理費用（円）<input max="99999999" min="0" name="repairCost" placeholder="未入力でもOK" type="number"/></label></div><label>内容・メモ<textarea maxlength="2500" name="note" placeholder="作業内容、破損状態、修理手順など" rows="3"></textarea></label><label>画像（任意・1枚）<input accept="image/*" id="recordPhoto" type="file"/></label><span class="field-hint">画像は端末内で縮小して保存します。大量の画像はSafariの容量上限に注意してください。</span><img alt="写真プレビュー" class="hide" id="previewRecordImage"/><div class="actions"><button class="primary" type="submit">保存する</button><button class="secondary" id="deleteRecord" style="display:none" type="button">削除</button></div></form></dialog>
 <dialog id="budgetDialog"><div class="dialoghead"><h2>月間予算</h2><button class="x" data-close="budgetDialog" type="button">×</button></div><form id="budgetForm"><label>月間予算（円）<input min="0" name="budget" required="" step="1" type="number"/></label><button class="primary full">保存</button></form></dialog>
+<dialog id="welcomeDialog" class="welcome-dialog" aria-labelledby="welcomeHeading">
+<div class="dialoghead"><h2 id="welcomeHeading">WELCOME / GUNPLA HANGAR</h2><button type="button" class="x" id="closeWelcomeX" aria-label="ガイドを閉じる">×</button></div>
+<div class="welcome-content">
+ <p class="welcome-lead">YOUR PERSONAL MS HANGAR</p>
+ <p>ガンプラ・パーツ・工具を自分専用のハンガーに登録できます。</p>
+ <ol class="welcome-steps"><li><strong>MSを登録</strong><span>ホームの「＋ キット登録」から追加できます。</span></li><li><strong>好きなカラーに変更</strong><span>設定の「MS COLOR SYSTEM」から4種類のテーマを選べます。</span></li><li><strong>バックアップを保存</strong><span>設定からJSONバックアップを保存してください。</span></li></ol>
+ <div class="welcome-warning"><strong>大切なデータについて</strong><p>登録内容は今使っている端末・ブラウザだけに保存されます。友達のデータと混ざりません。iPhoneとPCの自動同期はなく、履歴やWebサイトデータを消去すると失われる場合があります。定期的にバックアップしてください。</p></div>
+ <p class="small">配布URLは公開ページです。URLを知った人のアクセスを制限する仕組みではありません。</p>
+ <button id="closeWelcome" type="button" class="primary full">確認して始める</button>
+</div></dialog>
 <script>
 (()=>{'use strict';const KEY='gunpla-hangar-v1';const $=s=>document.querySelector(s);const yen=n=>'¥'+Math.round(Number(n)||0).toLocaleString('ja-JP');const uid=()=>crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const dataDefault=()=>({kits:[],supplies:[],records:[],budget:30000});let db;try{db=JSON.parse(localStorage.getItem(KEY))||dataDefault()}catch{db=dataDefault()}if(!Array.isArray(db.kits))db.kits=[];if(!Array.isArray(db.supplies))db.supplies=[];if(!Array.isArray(db.records))db.records=[];if(!Array.isArray(db.parts))db.parts=[];if(!Number.isFinite(Number(db.budget)))db.budget=30000;const save=()=>{try{const v=JSON.stringify(db);localStorage.setItem(KEY,v);if(localStorage.getItem(KEY)!==v)throw Error('保存内容を確認できません');return true}catch(e){alert('保存に失敗しました。記録は確定していません。Safariの通常タブで開き、保存容量と設定を確認してください。\n'+e.message);return false}};
 // MS name display dictionary. Original saved name is never modified.
@@ -601,6 +769,22 @@ let savedMsTheme='strike';try{savedMsTheme=localStorage.getItem(MS_THEME_KEY)||'
 setMsTheme(savedMsTheme,false);
 document.querySelectorAll('[data-theme]').forEach(btn=>btn.addEventListener('click',()=>setMsTheme(btn.dataset.theme)));
 
+
+// v2.1: visual mode is a per-browser preference; inventory and MS themes are unchanged.
+const UI_MODE_KEY='gunpla-hangar-ui-mode-v1';
+function setUiMode(mode,persist=true){
+ const value=mode==='simple'?'simple':'cockpit';
+ document.documentElement.dataset.uiMode=value;
+ document.querySelectorAll('[data-ui-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.uiChoice===value)));
+ const status=document.getElementById('uiModeStatus');
+ if(status)status.textContent='選択中：'+(value==='simple'?'SIMPLE FUTURE':'COCKPIT HUD');
+ if(persist){try{localStorage.setItem(UI_MODE_KEY,value)}catch(e){if(status)status.textContent+='（保存できませんでした）'}}
+}
+let currentUiMode='cockpit';
+try{currentUiMode=localStorage.getItem(UI_MODE_KEY)||'cockpit'}catch(_e){}
+setUiMode(currentUiMode,false);
+document.querySelectorAll('[data-ui-choice]').forEach(b=>b.addEventListener('click',()=>setUiMode(b.dataset.uiChoice)));
+
 // Private text-only home message settings; separate storage key preserves legacy inventory data.
 const QUOTE_KEY='gunpla-hangar-display-quotes-v1';
 const QUOTE_MAX_CHARS=50,QUOTE_MAX_ITEMS=30;
@@ -679,6 +863,16 @@ const showMenu = page => {
 };
 $('#openRecords').onclick=()=>showMenu('records');
 $('#backFromRecords').onclick=()=>showMenu('data');
+// SHARE EDITION - independent first-launch guidance; no mutation of inventory data.
+const WELCOME_KEY='gunpla-hangar-welcome-v2';
+const welcomeDialog=document.getElementById('welcomeDialog');
+const openWelcome=()=>{if(welcomeDialog && !welcomeDialog.open) welcomeDialog.showModal()};
+const closeWelcome=()=>{if(welcomeDialog?.open) welcomeDialog.close(); try{localStorage.setItem(WELCOME_KEY,'seen')}catch(_e){}};
+document.getElementById('openWelcome').addEventListener('click',openWelcome);
+document.getElementById('closeWelcome').addEventListener('click',closeWelcome);
+document.getElementById('closeWelcomeX').addEventListener('click',closeWelcome);
+welcomeDialog.addEventListener('close',()=>{try{localStorage.setItem(WELCOME_KEY,'seen')}catch(_e){}});
+try{if(localStorage.getItem(WELCOME_KEY)!=='seen')requestAnimationFrame(openWelcome)}catch(_e){};
 renderRecords();
 render();
 let lastPage='home', restoreY=null;
