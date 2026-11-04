@@ -595,6 +595,84 @@ html[data-ui-mode="simple"] .ui-mode-choice[aria-pressed="true"]{border:2px soli
 html[data-ui-mode="simple"] .ui-mode-choice::before,
 html[data-ui-mode="simple"] .ui-mode-choice::after{display:none!important;content:none!important}
 @media(max-width:380px){.ui-mode-grid{gap:8px}.ui-mode-choice{padding:10px}.ui-mode-choice strong{font-size:13px}html[data-ui-mode="simple"] .stats{gap:7px!important}html[data-ui-mode="simple"] .stat{padding:12px 8px!important}}
+
+/* v2.1.1 / SIMPLE FUTURE fine-line refinement — cockpit CSS untouched. */
+html[data-ui-mode="simple"]{
+ --simple-line:#31445a;
+ --simple-surface:#121b29;
+ --simple-raised:#182535;
+}
+/* Keep existing shapes and positions; lighten visual weight only. */
+html[data-ui-mode="simple"] .hero,
+html[data-ui-mode="simple"] .panel,
+html[data-ui-mode="simple"] .kit-card,
+html[data-ui-mode="simple"] .unit-terminal,
+html[data-ui-mode="simple"] .stat{
+ border-width:.5px!important;
+ border-style:solid!important;
+ border-color:rgba(136,161,190,.35)!important;
+}
+html[data-ui-mode="simple"] .unit-terminal{
+ border-color:rgba(128,163,198,.26)!important;
+ background:#101925!important;
+}
+html[data-ui-mode="simple"] .hero{background:#111b29!important}
+html[data-ui-mode="simple"] .stats{gap:10px!important}
+html[data-ui-mode="simple"] .stat{background:#131e2d!important}
+html[data-ui-mode="simple"] .online-pill,
+html[data-ui-mode="simple"] .chip,
+html[data-ui-mode="simple"] .command-metrics span,
+html[data-ui-mode="simple"] .repair-details,
+html[data-ui-mode="simple"] .repair-banner{
+ border-width:.5px!important;
+}
+html[data-ui-mode="simple"] .command-metrics span,
+html[data-ui-mode="simple"] .chip{
+ background:#192636!important;
+ border-color:rgba(136,161,190,.32)!important;
+}
+html[data-ui-mode="simple"] .primary,
+html[data-ui-mode="simple"] .secondary,
+html[data-ui-mode="simple"] .danger,
+html[data-ui-mode="simple"] .refresh-button,
+html[data-ui-mode="simple"] .tiny,
+html[data-ui-mode="simple"] .x,
+html[data-ui-mode="simple"] .record-tabs button,
+html[data-ui-mode="simple"] input,
+html[data-ui-mode="simple"] textarea,
+html[data-ui-mode="simple"] select{
+ border-width:.5px!important;
+}
+html[data-ui-mode="simple"] .secondary,
+html[data-ui-mode="simple"] .refresh-button,
+html[data-ui-mode="simple"] .tiny,
+html[data-ui-mode="simple"] .x{
+ border-color:rgba(147,169,196,.35)!important;
+ background:#182434!important;
+}
+html[data-ui-mode="simple"] input,
+html[data-ui-mode="simple"] textarea,
+html[data-ui-mode="simple"] select{border-color:rgba(144,172,199,.35)!important}
+html[data-ui-mode="simple"] .kit-card.status-repair{border-left-width:2px!important}
+html[data-ui-mode="simple"] .kit-card.status-building{border-left-width:2px!important}
+html[data-ui-mode="simple"] .kit-card.status-complete{border-left-width:2px!important}
+html[data-ui-mode="simple"] .kit-card.status-hold{border-left-width:2px!important}
+html[data-ui-mode="simple"] .tabs{border-top-width:.5px!important;border-top-color:rgba(135,161,191,.34)!important}
+html[data-ui-mode="simple"] .tabs>.home-tab{border-width:.5px!important;border-color:rgba(143,174,204,.38)!important}
+html[data-ui-mode="simple"] dialog,
+html[data-ui-mode="simple"] dialog form,
+html[data-ui-mode="simple"] dialog>div,
+html[data-ui-mode="simple"] .theme-choice,
+html[data-ui-mode="simple"] .ui-mode-choice{
+ border-width:.5px!important;
+}
+html[data-ui-mode="simple"] .theme-choice[aria-pressed="true"],
+html[data-ui-mode="simple"] .ui-mode-choice[aria-pressed="true"]{
+ border-width:1px!important;
+}
+/* Status accents remain visible but quieter; line geometry unchanged. */
+html[data-ui-mode="simple"] .unit-led{opacity:.48!important}
+
 </style></head><body>
 <header><div class="header-wrap"><div class="header-row"><div><div class="brand">MS INVENTORY CONTROL / v2.1</div><h1>GUNPLA HANGAR</h1><p class="sub">TACTICAL INVENTORY HUD <span class="online-pill">● SYSTEM ONLINE</span></p></div><button type="button" id="refreshView" class="refresh-button" aria-label="現在の画面を更新" title="この画面を更新">↻<span>SYNC</span></button></div></div></header>
 <main class="shell">
